@@ -1,0 +1,13 @@
+﻿{
+"source":{"path":"","items":0,"volume_label":"test volume","folder_created":""},
+"output_path":"d:\\VideoOutput",
+"archive_path":"d:\\VideoArchive",
+"upload_url":"http://ivideolib.com/FileUploader/FileUploader.asmx/ReceiveChunk",
+"maximum_process":1,
+"maximum_upload":1,
+"debug_mode":false,
+"stopped":true,
+"video_extensions":[".mts",".avi",".mkv",".mp4",".wmv",".flv",".swf",".mpg"],
+"error":null,
+"marker":null,
+"queueStopped":false}

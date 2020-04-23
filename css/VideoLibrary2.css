@@ -1,0 +1,136 @@
+﻿* 
+{
+    margin:0px;
+    padding:0px;
+    font-family:Tahoma;
+    font-size:9pt;
+    text-align:center;
+}
+
+body
+{
+    overflow:hidden;
+}
+
+#main
+{
+/*    background:#abcdef;
+    display:flex;
+    height:100vh;*/
+}
+#main_wrapper
+{
+    display:flex;
+    background:cyan;
+    height:100vh;
+    flex-direction:column;
+}
+
+#header
+{
+    background:red;
+    color:white;
+    height:75px;
+}
+
+#details
+{
+    display:flex;
+    background:brown;
+    color:White;
+    flex-grow:1;
+}
+
+#tree
+{
+    background:lime;
+    width:200px;
+    
+}
+
+#thumbnails
+{
+    background:orange;
+    width:200px;
+    
+    display:flex;
+    flex-wrap:wrap;
+    align-content:flex-start;
+    width:427px;
+    
+}
+#playing
+{
+    background:#a0a0a0;
+    
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+}
+
+#videoplayer
+{
+    background:yellow;
+    color:Black;
+    flex-grow:1;
+}
+
+#comments
+{
+    background:magenta;
+    color:white;
+    flex-grow:1;
+    
+}
+
+#footer
+{
+    background:blue;
+    color:white;
+    height:23px;
+}
+
+.box
+{
+}
+
+.box1
+{
+    background:red;
+}
+.box2
+{
+    background:green;
+}
+.box3
+{
+    background:blue;
+}
+.box4
+{
+    background:yellow;
+}
+.box5
+{
+    background:#a496be;
+}
+.box6
+{
+    background:magenta;
+}
+.box7
+{
+    background:olive;
+}
+.box8
+{
+    background:lime;
+}
+.box9
+{
+    background:#c0c0c0;
+}
+.box10
+{
+    background:gold;
+}

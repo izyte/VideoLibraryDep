@@ -1,0 +1,1 @@
+call ffprobe.exe -show_streams -i %1 2>%2

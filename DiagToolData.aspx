@@ -1,0 +1,1 @@
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="DiagToolData.aspx.vb" Inherits="DiagToolData" %>

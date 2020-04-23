@@ -1,0 +1,92 @@
+﻿*
+{
+    margin: 0px;
+    padding: 0px;
+    font-family: Tahoma;
+    font-size: 9pt; /*text-align:center;*/
+    color: White; /*scrollbar-face-color: #303030;     scrollbar-highlight-color: red;     scrollbar-3dlight-color: #c0c0c0;     scrollbar-darkshadow-color: #606060;     scrollbar-shadow-color: #202020;     scrollbar-arrow-color: #C0C0C0;     scrollbar-track-color: Black;   */
+    scrollbar-face-color: #404040; /* handle*/
+    scrollbar-face-color: #303030;
+    scrollbar-highlight-color: blue;
+    scrollbar-3dlight-color: lime;
+    scrollbar-darkshadow-color: yellow;
+    scrollbar-shadow-color: #606060; /* line surrounding the handle */
+    scrollbar-arrow-color: white; /* arrows fore color */
+    scrollbar-track-color: #202020; /* main track */
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+}
+
+body
+{
+    overflow: hidden;
+    background: #282828;
+}
+
+#divMain
+{
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+}
+
+#divPlayer
+{
+    background:black;
+    display:flex;
+    text-align:center;
+    flex-shrink:0;
+    flex-grow:1;
+}
+
+        
+#divTitle, #divDesc, #divCommHead
+{
+    flex-grow:0;
+    flex-shrink:0;
+    height:22px;
+    
+    font-family:Trebuchet MS;
+    padding-left:5px;
+    color:White;
+    font-size:16px;
+    overflow:hidden;
+    white-space:nowrap;
+        
+}
+
+#divCommHead
+{
+}
+
+#divDesc
+{
+    border-bottom:1px solid #505050;
+}
+
+
+#divTitle
+{
+    margin-top:3px;
+}
+
+#divComm
+{
+    padding-left:5px;    
+    flex-grow:0;
+    flex-shrink:0;
+    overflow:auto;
+    height:100px;
+}
+
+#divDesc, #divComm
+{
+    color:#c0c0c0;
+    font-family:Trebuchet MS;    
+    font-size:12px;
+}
+
+
+#videoplayer
+{
+}
