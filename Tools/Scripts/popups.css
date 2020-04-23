@@ -1,0 +1,678 @@
+﻿
+/*
+    My custom style start 
+    */
+table.dt th {
+    font-variant: small-caps;
+    font-size: 11px !important;
+}
+
+table.dt td {
+    padding: 3px;
+    border: 1px solid #c9cdd8;
+}
+
+#idletimeout {
+    background: #CC5100;
+    border: 3px solid #FF6500;
+    color: #fff;
+    font-family: arial, sans-serif;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    position: relative;
+    top: 0px;
+    left: 0;
+    right: 0;
+    z-index: 100000;
+    display: none;
+}
+
+    #idletimeout span {
+        font-weight: bold;
+    }
+
+.row-ptr {
+    border: 1px solid #c9cdd8;
+    /*Neo Datagrid Selected Highlight*/
+    /*background: url(../images/RowPointer.png) left repeat-y !important;*/
+    background-color: #a0a1a4 !important;
+    color:#030339 !important;
+}
+
+.busy-bg {
+    background-image: url(../images/busy.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #081bf8;
+    cursor: wait;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+
+#preview {
+    position: absolute;
+    border: 1px solid #ccc;
+    background: #333;
+    padding: 5px;
+    display: none;
+    color: #fff;
+}
+
+
+.image-box {
+    width: 30px;
+    margin: 10px 0 0 10px;
+    padding: 10px 10px;
+    background: #8ecf02;
+    border: 2px solid #618d03;
+}
+
+.expand-box {
+    padding: 3px 5px;
+    margin: 12px -12px;
+    background: #f0cc3c;
+    border: 1px solid #cfa602;
+    width: 150px;
+    display: none;
+    position: absolute;
+    z-index: 9999;
+}
+
+    .expand-box ul {
+        clear: right;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: left;
+        width: 85%;
+        z-index: 9999;
+    }
+
+        .expand-box ul li {
+            clear: both;
+            margin: 0 0 0 7px;
+            padding: 5px;
+            border-bottom: 1px solid #cfa602;
+            list-style: none;
+            z-index: 9999;
+        }
+
+            .expand-box ul li a {
+                color: #cfa602;
+                text-decoration: none;
+                z-index: 9999;
+            }
+
+    .expand-box span {
+        float: left;
+        z-index: 9999;
+    }
+/* Body and Splitter */
+body {
+    /*height: 100%;	*/
+    width: 100%;
+    padding: 0px;
+    font-family: 'Segoe UI',Verdana, Arial, Helvetica, sans-serif !important;
+    font-weight: normal;
+    font-size: 11px;
+    margin: 0px;
+    overflow: hidden; /* when page gets too small */
+    background-color: #eeeff4;
+    color: #000000 !important;
+}
+
+div.dlg {
+    display: none;
+}
+
+div.no-scroll {
+    overflow: hidden !important;
+}
+
+div.t-page {
+    padding: 3px !important;
+    display: none;
+}
+
+div.memo {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: auto;
+    vertical-align: top;
+    background: #eeeff4;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #cbcdcc !important;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 1px;
+    width: 100%;
+    padding: 0px;
+    clear: both;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+td {
+    vertical-align: top;
+    line-height: 17px;
+    height: 17px;
+    padding: 0px;
+}
+
+td.w-font {
+    color: white;
+}
+
+td.r-align {
+    text-align: right !important;
+}
+td.c-align {
+    text-align: center !important;
+}
+
+td.green {
+    background: green;
+    vertical-align: middle;
+}
+
+td.red {
+    background: #FF0000;
+    vertical-align: middle;
+}
+
+td.yellow {
+    background: yellow;
+    vertical-align: middle;
+}
+
+td.blue {
+    background-color: #3b5999;
+    vertical-align: middle;
+}
+
+td.bold {
+    font-weight: bold;
+}
+
+    td.rf-i {
+        width: 220px; 
+        text-align: center; 
+        vertical-align: middle; 
+        border: 1px solid #c9cdd8;
+    }
+    
+
+    td.img-p {
+        width: 220px; 
+        text-align: center; 
+        vertical-align: middle; 
+        border: 1px solid #c9cdd8;
+    }
+
+    td.value {
+        padding-left: 2px;
+        vertical-align: top;
+        text-align: left;
+        background: #eeeff4;
+        border: 1px solid #cbcdcc;
+    }
+
+img.rf_i {
+    width: 181px; 
+    height: 181px; 
+    padding: 0; 
+    margin: 0;
+    border-color: red;
+}
+input, textarea, select {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+    background: #eeeff4;
+    border: 1px solid #cbcdcc;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 17px;
+    margin: 0px;
+    width: 100%;
+}
+input[type="checkbox"] { /*Seperate input tpes because of checkbox (:not) which is not working in IE8*/
+    width: 20px;
+}
+
+/*--Tabs--*/
+
+/*--- Tree Start */
+ul.tree {
+    list-style-type: none;
+    background: url(../images/images.png) -71px 0 repeat-y;
+    padding: 0px;
+    margin: 0px;
+}
+
+    ul.tree ul {
+        margin-left: 20px;
+    }
+    ul.tree li {
+        white-space: nowrap;
+    }
+    ul.tree span.RED, 
+    ul.tree span.AMBER, 
+    ul.tree span.GREEN, 
+    ul.tree span.NULL,
+    ul.tree span.REDX, 
+    ul.tree span.AMBERX, 
+    ul.tree span.GREENX, 
+    ul.tree span.NULLX,
+    ul.tree span.f-c, 
+    ul.tree span.f-e, 
+    ul.tree span.f-n {
+        background-image: url(../images/images.png);
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    ul.tree span.RED {
+        background-position: -32px 0px;
+    }
+    ul.tree span.AMBER {
+        background-position: -16px 0;
+    }
+    ul.tree span.GREEN {
+        background-position: 0 0;
+    }
+        ul.tree span.NULL {
+        background-position: -48px -0px;
+    }
+
+    ul.tree span.REDX {
+        background-position: -32px -48px;
+    }
+    ul.tree span.AMBERX {
+        background-position: -16px -48px;
+    }
+    ul.tree span.GREENX {
+        background-position: 0 -48px;
+    }
+    ul.tree span.NULLX {
+        background-position: -48px -48px;
+    }
+
+    ul.tree span.f-c {
+        background-position: 0px -16px;
+        cursor: pointer;
+    }
+    ul.tree span.f-e {
+        background-position: -16px -16px;
+        cursor: pointer;
+    }
+    ul.tree span.f-n {
+        background-position: -32px -16px;
+    }
+     ul.tree span.nd {
+         vertical-align: middle;
+        line-height: 20px;
+        height: 20px;
+        padding: 3px 7px;
+        margin-left: 2px;
+        display: inline-block;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    ul.tree span.italic {
+        font-style:italic;
+        color: gray;
+    }
+
+/*--- Tree End */
+
+div.m-pane1 {
+    margin: 0;
+    display: none;
+    
+    padding: 0;
+    margin: 0;
+}
+
+.ptr {
+    cursor: pointer;
+}
+
+
+.background-hdr {
+    background-image: url(../images/logo_fill.png) !important;
+    background-repeat: repeat-x !important;
+    text-align: right;
+    border-style: none !important;
+}
+
+
+.cap {
+    font-size: 13px;
+    padding: 3px;
+    font-weight: normal;
+}
+/* css for timepicker */
+.ui-timepicker-div {
+    margin-bottom: 8px;
+}
+
+    .ui-timepicker-div dl {
+        text-align: left;
+    }
+
+        .ui-timepicker-div dl dt {
+            height: 25px;
+            margin-bottom: -25px;
+        }
+
+        .ui-timepicker-div dl dd {
+            margin: 0 10px 10px 65px;
+        }
+
+    .ui-timepicker-div td {
+        font-size: 90%;
+    }
+
+.ui-tpicker-grid-label {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-timepicker-rtl {
+    direction: rtl;
+}
+
+    .ui-timepicker-rtl dl {
+        text-align: right;
+    }
+
+        .ui-timepicker-rtl dl dd {
+            margin: 0 65px 10px 10px;
+        }
+
+
+
+/*Custom theme for jquery plugins START*/
+.dataTables_length select {
+    width: auto !important;
+}
+
+.ui-layout-center-n {
+    overflow: hidden;
+    height:100%;
+    /*height:700px;*/
+}
+
+.ui-layout-center, .ui-layout-south, .ui-layout-west {
+    overflow: hidden;
+}
+.ui-widget-header {
+    font-variant: small-caps;
+}
+ui-widget-content {
+    padding: 5px;
+}
+.ui-dialog-titlebar {
+    font-variant: small-caps;
+    font-size: 12px;
+}
+.ui-dialog-shadow
+     {
+	-webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+	   -moz-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+	    -ms-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+	     -o-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+	        box-shadow: 2px 3px 5px #999;
+            behavior: url(scripts/PIE.htc); /*Enable CS3*/
+
+
+ }
+.no-close .ui-dialog-titlebar-close
+{
+    display:none;
+}
+
+
+
+        /*Custom theme for jquery plugins END*/
+
+span.p-mnu, span.s-mnu {
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    position: absolute; 
+    right: 90px;
+}
+span.p-mnu span, span.s-mnu span {
+    padding: 0 5px;
+    padding-bottom: 3px;
+    border-left:solid 1px #ccc;
+    /*border-right:solid 1px #ccc;*/
+}
+/*Neo Menu css*/
+span.p-mnu .ui-state-highlight-l, span.s-mnu .ui-state-highlight-l {
+    border-bottom: solid 1px #fc8503;
+    border-top: solid 1px #fc8503; 
+    /*display:none;*/
+}
+span.p-mnu .ui-state-hover-l, span.s-mnu .ui-state-hover-l {
+    border-bottom: solid 1px #fff;
+    border-top: solid 1px #fff;
+    
+}
+span.p-mnu {
+    top: 6px;
+}
+
+span.s-mnu {
+    display:none;
+    top: 30px;
+}
+span.r-align {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+ul.lp {
+    list-style-type: none;
+    background: url(../images/images.png) -71px 0 repeat-y;
+    padding: 0px;
+    margin: 0px;
+}
+
+    ul.lp ul {
+        margin-left: 20px;
+    }
+
+    ul.lp li {
+        white-space: nowrap;
+    }
+
+    ul.lp span.lp-an,
+    ul.lp span.lp-ch,
+    ul.lp span.lp-dd,
+    ul.lp span.lp-rf,
+    ul.lp span.lp-rpt,
+    ul.lp span.f-c,
+    ul.lp span.f-e,
+    ul.lp span.f-n {
+        background-image: url(../images/images.png);
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    ul.lp span.lp-an {
+        background-position: 0px -64px;
+    }
+    ul.lp span.lp-ch {
+        background-position: -16px -64px;
+    }
+    ul.lp span.lp-dd {
+        background-position: -32px -64px;
+    }
+    ul.lp span.lp-rf {
+        background-position: -48px -64px;
+    }
+    ul.lp span.lp-rpt {
+        background-position: -48px -16px;
+    }
+
+    ul.lp span.f-c {
+        background-position: 0px -16px;
+        cursor: pointer;
+    }
+
+    ul.lp span.f-e {
+        background-position: -16px -16px;
+        cursor: pointer;
+    }
+
+    ul.lp span.f-n {
+        background-position: -32px -16px;
+    }
+
+    ul.lp span.lp-d {
+        vertical-align: middle;
+        line-height: 20px;
+        height: 20px;
+        padding: 3px 7px;
+        margin-left: 2px;
+        display: inline-block;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+span.d-icons {
+    display: inline-block; 
+    background-image: url(../images/ui-icons_3b5999_256x240.png) !important;
+}
+button.d-icons {
+    background-image: url(../images/ui-icons_3b5999_256x240.png) !important;
+
+}
+
+button.s {
+    height: 20px; 
+    width: 16px;
+    border: 1px solid #c9cdd8;
+    cursor: pointer;
+    margin: 0px;
+    display:inline-block;
+
+}
+
+button.pr {
+    border: 2px solid #3b5999;
+}
+
+
+ 
+
+    .lp-i {
+        background-position: -48px -16px;
+                background-image: url(../images/images.png);
+   background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+    }
+ 
+
+  
+/* Generic context menu styles */
+.contextMenu {
+	position: absolute;
+	width: 120px;
+	z-index: 99999;
+	border: solid 1px #CCC;
+	background: #EEE;
+	padding: 0px;
+	margin: 0px;
+	display: none;
+}
+
+.contextMenu LI {
+	list-style: none;
+	padding: 2px;
+	margin: 0px;
+}
+
+.contextMenu A {
+    color: #3b5999;
+	text-decoration: none;
+	display: inline-block;
+	line-height: 17px;
+	height: 17px;
+	background-position: 6px center;
+	background-repeat: no-repeat;
+	outline: none;
+	padding: 1px 5px;
+	padding-left: 7px;
+    font-variant: small-caps;
+    font-size: 11px;
+}
+
+.contextMenu LI.disabled A {
+	color: #AAA;
+	cursor: default;
+}
+
+.contextMenu LI.hover.disabled A {
+	background-color: transparent;
+}
+
+.contextMenu LI.separator {
+	border-top: solid 1px #CCC;
+}
+
+/*
+	Adding Icons
+	
+	You can add icons to the context menu by adding
+	classes to the respective LI element(s)
+*/
+
+.button {
+    line-height: 10px !important;
+    height: 10px  !important;
+}
+
+.no-disp {
+    display: none;
+}
+.tabletools-r-space {
+    margin-right: 5px !important;
+}
+.ui-widget-overlay
+{
+  opacity: .70 !important; /* Make sure to change both of these, as IE only sees the second one */
+  filter: Alpha(Opacity=70) !important;
+  background: none !important;
+  background-color: rgb(50, 50, 50) !important; /* This will make it darker */
+}
+.r-pos {
+    position: absolute;
+    right: 10px;
+}
+.l-pad {
+    padding-left: 5px;
+}

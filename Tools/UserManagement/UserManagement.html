@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>User Management</title>
+    <link rel="stylesheet" type="text/css" href="../scripts/main_theme.css?ver=1" />
+    <link rel="stylesheet" type="text/css" href="../scripts/popups.css?ver=1" />
+    <style>
+            body {
+                font-family: Verdana,sans-serif;
+                font-size: 0.8em;
+                background-color: #121316;
+            }
+
+            div#header, div#footer, div#content {
+                border: none;/*1px solid grey;*/
+                margin: 5px;
+                margin-bottom: 5px;
+                padding: 3px;
+                background-color: #282828;/*#ff0000;*/
+            }
+
+            div#header, div#footer {
+                color: white;
+                background-color: #282828;
+                margin-bottom: 5px;
+                border-radius: 5px 15px;/*Neo Rounded borders*/
+            }
+
+            div#post {
+                border: 1px solid grey;
+                margin: 5px;
+                margin-bottom: 5px;
+                padding: 5px;
+                background-color: #c1c1c2;
+                height: 320px;
+                border-radius: 5px;
+                /*font-weight:bold;*/
+                color:darkblue;
+            }
+
+            div#content {
+                background-color: #282828;
+                border-radius: 5px 25px;
+                border: 1px solid #050764;
+                /*padding: 20px;
+                width: 200px;
+                height: 150px;*/
+            }
+
+            div#menu ul {
+                margin: 0;
+                padding: 0;
+            }
+
+                div#menu ul li {
+                    display: inline;
+                    margin: 5px;
+                    color: darkblue;
+                    cursor:default;
+                    border-color:blue;
+                    border-bottom:solid;
+                    border-width:1px;
+                    padding: 3px;
+                }
+    </style>
+</head>
+
+
+<body>
+
+    <div id="header">
+        <h2 style="padding:3px;margin:3px;">User Management</h2>
+    </div>
+
+    <div id="content">
+        <!--<h2>Users</h2>-->
+        <table>
+            <tr>
+                <td style="width:40%;">
+                    <div id="post">
+                        <h3 style="padding:1px;margin:1px;">Users</h3>
+                        <div id="usrsum_c_pane" class="ui-layout-center-n">
+                            <table id="usrlist_dt" class="dt"></table>
+                        </div>
+                    </div>
+                </td>
+                <td style="width:60%;">
+                    <!--<div id="menu">
+            <ul>
+                <li>Add</li>
+                <li>Edit</li>
+                <li>Delete</li>
+            </ul>
+        </div>-->
+                    <div id="post">
+                        <h3 style="padding:1px;margin:1px;">Users Parameters</h3>
+                        <div id="usrparsum_c_pane" class="ui-layout-center-n">
+                            <table id="usrparlist_dt" class="dt"></table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="footer">
+        <p>Video Library User Management</p>
+    </div>
+
+
+    <script type="text/javascript" src="../scripts/framework-min.js?ver=1"></script>
+    <script type="text/javascript" src="../Scripts/main.js?ver=3"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            PageInit();
+        });</script>
+</body>
+</html>
