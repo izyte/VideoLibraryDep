@@ -36,12 +36,8 @@ Partial Class VideoData
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'LogEvent("VideoData start: " & vidAction)
-        Dim jData As String = ""
         Select Case vidAction
 
-            Case "fltl"
-                jData = "{""campaigns"":" & vidJSONString("select distinct vid_campaign as cmp from TBL_VIDEOS where not vid_deleted  and not IsNull([vid_campaign]) order by vid_campaign;") & ", ""inspectionTypes"":" & vidJSONString("select distinct vid_insp_type as itp from TBL_VIDEOS where not vid_deleted and vid_insp_type<>"""" and not IsNull([vid_insp_type]) order by vid_insp_type;") & "}"
-                Response.Write(jData)
             Case "dload"
                 DownloadVideo()
 

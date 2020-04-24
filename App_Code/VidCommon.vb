@@ -1,7 +1,6 @@
 ﻿Imports System.Data
 Imports System.Data.OleDb
 Imports System.IO
-Imports Newtonsoft.Json
 
 Imports System.Web.HttpServerUtility
 
@@ -10,8 +9,7 @@ Public Class VidCommon
 
     Public ReadOnly Property AppVer As String
         Get
-            ' Return "Inspection Video Library Release&nbsp;1.0-2017.01.19.1330"
-            Return "Inspection Video Library Release&nbsp;1.0.1-2020.01.24.0954"
+            Return "Inspection Video Library Release&nbsp;1.0-2017.01.19.1330"
         End Get
     End Property
 
@@ -81,7 +79,6 @@ Public Class VidCommon
 
         Dim Comments As String
         Dim Description As String
-        Dim Campaign As String
 
         Dim IsNewFile As Boolean
 
@@ -227,6 +224,7 @@ Public Class VidCommon
     End Property
 
     ReadOnly Property logUID As String
+
         Get
             Return Request.Params("u") & ""
         End Get
@@ -234,6 +232,7 @@ Public Class VidCommon
     End Property
 
     ReadOnly Property logPWD As String
+
         Get
             Return Request.Params("p") & ""
         End Get
@@ -353,14 +352,6 @@ Public Class VidCommon
         End Get
     End Property
 
-    ReadOnly Property vidCampaignFilter As String
-        Get
-
-            Dim inp As String = Request.Params("cmp") & ""
-            Return Uri.UnescapeDataString(IIf(inp = "unspecified", "u", inp))
-        End Get
-    End Property
-
 
     ReadOnly Property vidFilename As String
         Get
@@ -403,22 +394,6 @@ Public Class VidCommon
         End Get
     End Property
 
-
-    ReadOnly Property vidFlags As String
-        Get
-            Return Uri.UnescapeDataString(Request.Params("flags") & "")
-
-        End Get
-    End Property
-
-
-    ReadOnly Property vidCampaign As String
-        Get
-            Return Uri.UnescapeDataString(Request.Params("cmp") & "")
-
-        End Get
-    End Property
-
     ReadOnly Property vidComments As String
         Get
             Return Uri.UnescapeDataString(Request.Params("cm") & "")
@@ -428,31 +403,20 @@ Public Class VidCommon
 
     ReadOnly Property vidInspOrInt As String
         Get
-            Dim inp As String = Request.Params("ioi") & ""
-            Return Uri.UnescapeDataString(IIf(inp = "unspecified", "u", inp))
+            Return Uri.UnescapeDataString(Request.Params("ioi") & "")
 
         End Get
     End Property
 
     ReadOnly Property vidInspDateScope As String
         Get
-            Dim inp As String = Uri.UnescapeDataString(Request.Params("scp") & "")
-            Select Case inp
-                Case "unspecified"
-                    inp = "u"
-                Case "before"
-                    inp = "t"
-                Case "after"
-                    inp = "f"
-            End Select
-            Return inp
+            Return Uri.UnescapeDataString(Request.Params("scp") & "")
         End Get
     End Property
 
     ReadOnly Property vidInspType As String
         Get
-            Dim inp As String = Request.Params("itp") & ""
-            Return Uri.UnescapeDataString(IIf(inp = "unspecified", "u", inp))
+            Return Uri.UnescapeDataString(Request.Params("itp") & "")
 
         End Get
     End Property
@@ -606,6 +570,7 @@ Public Class VidCommon
     End Property
 
     ReadOnly Property vidFileChunkIndex As Long
+
         Get
             Dim idx As Object = Request.Params("idx")
             If idx Is Nothing Then
@@ -618,6 +583,7 @@ Public Class VidCommon
     End Property
 
     ReadOnly Property vidCheck As Boolean
+
         Get
             Dim chk As Object = Request.Params("chk")
             If chk Is Nothing Then
@@ -732,7 +698,6 @@ Public Class VidCommon
                                                         , "InspectionType", .InspectionType _
                                                         , "MaintenanceItemNo", .MaintenanceItemNo _
                                                         , "InspectionDate", vidInspDateObj _
-                                                        , "VideoCampaign", vidCampaign _
                                                 }))
 
 
@@ -1039,7 +1004,7 @@ Public Class VidCommon
 
             text &= (",""" & escText(dbParams(1)) & """,""" & escText(dbParams(2)) & """,""" & _
                  escText(dbParams(3)) & """,""" & escText(dbParams(4)) & """,""" & dbParams(5) & """,""" & _
-                 escText(dbParams(6)) & """,""" & escText(dbParams(7)) & """,""" & escText(dbParams(8)) & """,""" & dbParams(9) & """,""" & escText(dbParams(10)) & """")
+                 escText(dbParams(6)) & """,""" & escText(dbParams(7)) & """,""" & escText(dbParams(8)) & """,""" & dbParams(9) & """")
 
 
 
@@ -1055,16 +1020,12 @@ Public Class VidCommon
 
     End Function
 
-    Function vidJSONString(ByVal SPName As String) As String
+    Sub vidJSONString(ByVal SPName As String)
 
         Dim params As OleDbParameter() = Nothing
         Dim tbl As DataTable, row As DataRow
 
-        If Left(LCase(SPName), 7) = "select " Then
-            tbl = ReadToTableSP(SPName)
-            Return TableToJSON(tbl)
-
-        ElseIf SPName = "VW_VIDEO_PER_BRANCH" Then
+        If SPName = "VW_VIDEO_PER_BRANCH" Then
 
             params = np1("ptag", vidAsset)
 
@@ -1074,10 +1035,19 @@ Public Class VidCommon
 
         ElseIf SPName = "VW_VIDEO_PER_BRANCH_FILTERED_ADVANCED" Then
 
-            params = npa(New Object() {"ptag", vidAsset, "VideoTitleFilter", vidFilter, "InspectionOrIntervention", vidInspOrInt, "InspectionType", vidInspType, "MaintenanceItemNo", vidMaintItemNo, "Scope", vidInspDateScope, "DFrom", fltDateFromObj, "DTo", fltDateToObj, "VideoCampaignFilter", vidCampaignFilter, "Flags", vidFlags})
+            params = npa(New Object() { _
+                          "ptag", vidAsset _
+                        , "VideoTitleFilter", vidFilter _
+                        , "InspectionOrIntervention", vidInspOrInt _
+                        , "InspectionType", vidInspType _
+                        , "MaintenanceItemNo", vidMaintItemNo _
+                        , "Scope", vidInspDateScope _
+                        , "DFrom", fltDateFromObj _
+                        , "DTo", fltDateToObj _
+                    })
+
 
             'Scope Text ( 255 ), [DFrom] DateTime, DTo DateTime;
-
         End If
 
         If params Is Nothing Then
@@ -1094,7 +1064,22 @@ Public Class VidCommon
             For Each row In tbl.Rows
                 path = GetVideoFolder(row("vid_id"), row("vid_group_ftag"), row("vid_asset_ftag"))
 
-                text = GetVideoJSON(path, New String() {row("vid_title") & "", row("vid_description") & "", row("vid_comments") & "", row("vid_filename") & "", row("vid_group_ftag") & "", row("vid_asset_ftag") & "", row("vid_insp_or_int") & "", row("vid_insp_type") & "", row("vid_maint_item_no") & "", dateToYMD(row("vid_insp_date")), row("vid_campaign") & ""}, row("vid_asset_name") & "", row("vid_group"), row("vid_asset"))
+                text = GetVideoJSON(path, _
+                                    New String() { _
+                                                row("vid_title") & "" _
+                                                , row("vid_description") & "" _
+                                                , row("vid_comments") & "" _
+                                                , row("vid_filename") & "" _
+                                                , row("vid_group_ftag") & "" _
+                                                , row("vid_asset_ftag") & "" _
+                                                , row("vid_insp_or_int") & "" _
+                                                , row("vid_insp_type") & "" _
+                                                , row("vid_maint_item_no") & "" _
+                                                , dateToYMD(row("vid_insp_date")) _
+                                                }, _
+                                    row("vid_asset_name") & "" _
+                                    , row("vid_group") _
+                                    , row("vid_asset"))
 
                 If text.Length Then retVal.Append(text & ",")
 
@@ -1104,19 +1089,9 @@ Public Class VidCommon
 
         tbl.Dispose()
 
-        Dim ret As String = "{" & retVal.ToString.TrimEnd(",") & "}"
+        Response.Write("{" & retVal.ToString.TrimEnd(",") & "}")
 
-        Response.Write(ret)
-
-        Return ret
-
-    End Function
-
-    Function TableToJSON(tbl As DataTable) As String
-        Dim ret As String = String.Empty
-        ret = JsonConvert.SerializeObject(tbl)
-        Return ret
-    End Function
+    End Sub
 
     'Sub vidJSONPerTitleFilter()
 
@@ -1422,38 +1397,18 @@ Public Class VidCommon
             Dim id As String
             For Each id In vidIDs
 
-                'recs += ExecuteSP("SP_UPDATE_VIDEO_RECORD_A", npa(New Object() { _
-                '                            "VideoId", CLng(id) _
-                '                            , "VideoGroup", vidGroup _
-                '                            , "VideoAsset", vidAsset _
-                '                            , "Title", IIf(vidIDs.Length > 1, Convert.DBNull, vidTitle) _
-                '                            , "VideoComments", vidComments _
-                '                            , "VideoDescription", vidDescription _
-                '                            , "InspectionOrIntervention", vidInspOrInt _
-                '                            , "InspectionType", vidInspType _
-                '                            , "MaintenanceItemNo", vidMaintItemNo _
-                '                            , "InspectionDate", vidInspDateObj _
-                '                            , "VideoCampaign", vidCampaign _
-                '                    }))
-
-                ' Updateflags 10-bit determines if the field will be updated to the
-                ' parameter passed of will be skipped and just assume the current value
-                ' 1111111111 
-
-                recs += ExecuteSP("SP_UPDATE_VIDEO_RECORD_B", npa(New Object() { _
-                            "VideoId", CLng(id) _
-                            , "VideoGroup", vidGroup _
-                            , "VideoAsset", vidAsset _
-                            , "Title", IIf(vidIDs.Length > 1, Convert.DBNull, vidTitle) _
-                            , "VideoComments", vidComments _
-                            , "VideoDescription", vidDescription _
-                            , "InspectionOrIntervention", vidInspOrInt _
-                            , "InspectionType", vidInspType _
-                            , "MaintenanceItemNo", vidMaintItemNo _
-                            , "InspectionDate", vidInspDateObj _
-                            , "VideoCampaign", vidCampaign _
-                            , "Flags", vidFlags _
-                    }))
+                recs += ExecuteSP("SP_UPDATE_VIDEO_RECORD_A", npa(New Object() { _
+                                            "VideoId", CLng(id) _
+                                            , "VideoGroup", vidGroup _
+                                            , "VideoAsset", vidAsset _
+                                            , "Title", IIf(vidIDs.Length > 1, Convert.DBNull, vidTitle) _
+                                            , "VideoComments", vidComments _
+                                            , "VideoDescription", vidDescription _
+                                            , "InspectionOrIntervention", vidInspOrInt _
+                                            , "InspectionType", vidInspType _
+                                            , "MaintenanceItemNo", vidMaintItemNo _
+                                            , "InspectionDate", vidInspDateObj _
+                                    }))
 
             Next
 
@@ -2153,8 +2108,6 @@ Public Class VidCommon
                            Optional ByVal IsSQL As Boolean = False) As DataTable
 
         '** Note : parameters must be passed in the same order at they are defined in the stored procedure
-
-        If Left(LCase(SPName), 7) = "select " Then IsSQL = True
 
         Dim retVal As New DataTable(IIf(IsSQL, SPName, "OUTTBL"))
         Dim da As OleDbDataAdapter = Nothing

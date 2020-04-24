@@ -14,14 +14,13 @@
     scrollbar-arrow-color: white; /* arrows fore color */
     scrollbar-track-color: #202020; /* main track */
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    box-sizing: border-box;
+
 }
 
 body
 {
     overflow: hidden;
     background: #282828;
-
 }
 
 select {
@@ -55,9 +54,8 @@ option
 #main_wrapper
 {
     display: flex;
-    flex-direction: column;
-    /*border:1px lime solid;*/
     height: 100vh;
+    flex-direction: column;
 }
 
 #header
@@ -95,7 +93,6 @@ option
 .sph
 {
     background: #1b1b1b;
-    /*background: red;*/
     max-height: 1px;
     min-height: 1px;
 }
@@ -115,7 +112,7 @@ option
     min-width: 7px;
     max-width: 7px;
     cursor: pointer;
-    /*background-image: url(images/nav_collapse_a.png);*/
+    background-image: url(images/nav_collapse_a.png);
     background-position: center center;
 }
 
@@ -157,7 +154,8 @@ spv2 e br
 #menu
 {
     display: flex;
-    height: 100%;
+    max-height: 25px;
+    min-height: 25px;
     flex-grow: 0;
     padding-top: 5px;
     padding-left: 10px;
@@ -195,8 +193,8 @@ spv2 e br
     flex-direction: row;
     justify-content: space-between;
     background: #111111;
-    min-height: 25px;
-    max-height: 25px;
+    min-height: 18px;
+    max-height: 18px;
     padding: 4px;
     padding-left: 10px;
     padding-bottom: 2px;
@@ -385,12 +383,10 @@ spv2 e br
     flex-direction:column;
     min-width: 390px;
     max-width: 390px;
+    flex-grow: 1;
 }
 
-input[type="checkbox"].clone{
-    margin-right:5px !important;
-    margin-top:3px !important;
-}
+
 
 #thumbsearch
 {
@@ -493,34 +489,29 @@ input[type="checkbox"].clone{
     font-family:Verdana;
 }
 
-#btnVidSearch,#btnVidFilter,#btnVidInvert,#btnVidSelect,#btnVidClear,#btnVidEdit,#btnVidExit
+#btnVidSearch,#btnVidFilter
 {
     width:55px;
     padding:2px;
     border-radius:6px;
-    height:24px;
+    height:22px;
     margin:0px;
     margin-top:4px;
     margin-right:4px;
 }
-#btnVidSelect{
-    width:75px;
-}
-#btnVidExit{width:35px;}
-#btnVidEdit{width:55px;}
-#btnVidInvert,#btnVidClear{width:95px;}
-/*
+
 #playing
 {
     display: flex;
     flex-direction: column;
     background: black;
-}*/
+}
 
 #player
 {
-    /*display:flex;
-    width:300px;
+    display:flex;
+    flex-grow:1;
+    /*width:300px;
     height:300px;
     background:red;*/
     
@@ -1023,7 +1014,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 {
     color:Orange;
 }
-B
+
 .y
 {
     color:Yellow;
@@ -1156,27 +1147,8 @@ B
     overflow:auto;
 }
 
-#details_fields{
-    
-}
-#details_fields div{
-    display:flex;
-}
-#details_fields div label{
-    width:200px;
-    margin-right:5px;
-    white-space:nowrap;
-}
 
-#details_fields div label.R{
-    text-align:right;
-    padding-right:10px;
-}
-
-#details_fields.form-group{
-    background:lime !important;
-}
-#details_fields_x
+#details_fields 
 {
 
 font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
@@ -1202,23 +1174,15 @@ font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
     font-weight:bold;
 }
 #details_fields table td input, #details_fields table td textarea,#details_fields table td select#vidInspOrInt,
-table td select#fltInspOrInt, table td select#fltScope,table td select#fltCampaign,table td select#fltInspType,
+table td select#fltInspOrInt, table td select#fltScope,
 table#tblVideoFilter td input
 {
     color:#202020;
-    width:470px;
+    width:450px;
     margin-bottom:8px;
     margin-left:8px;
     padding:5px;
 }
-
-table#tblVideoFilter td input[type="checkbox"]{
-    width:25px !important;
-    margin-top:8px;
-    cursor:pointer;
-}
-
-
 
 #details_fields table td textarea
 {
@@ -1407,35 +1371,4 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3d3d8
 {
     color:Blue;
 }
-.by{
-    background:yellow;
-}
-.bc{
-    background:cyan;
-}
-.bl{
-    background:lime;
-}
-.br{
-    background:red;
-    /*border:1px solid lime;*/
-}
-.bm{
-    background:magenta;
-}
-.bb{
-    background:blue;
-}
-.bk{
-    background:black;
-}
-.bo{
-    background:olive;
-    color:white;
-    font-weight: bold;
-}
 
-.bapp{
-    background:#282828;
-    color:white;
-}

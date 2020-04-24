@@ -13,7 +13,7 @@
 var Initializing_ = true;
 $(document).ready(function () {
 
-    //alert('initializing...');
+//alert('initializing...');
     var pg = redirectPage();
     if (pg) {
         return;
@@ -39,11 +39,11 @@ $(document).ready(function () {
     Initializing_ = false;
 
     $('#videoplayer').bind('contextmenu', function () { return false; });
-    //.on(
-    //    "timeupdate",
-    //    function (event) {
-    //        onTrackedVideoFrame(this, this.currentTime, this.duration);
-    //    });
+        //.on(
+        //    "timeupdate",
+        //    function (event) {
+        //        onTrackedVideoFrame(this, this.currentTime, this.duration);
+        //    });
 
 });
 
@@ -52,7 +52,7 @@ function onTrackedVideoFrame(video, currentTime, duration) {
     //console.log("Hellow!");
     //console.log(currentTime, duration);
 
-    //    download("hello.txt", "This is the content of my file :)");
+//    download("hello.txt", "This is the content of my file :)");
 }
 
 
@@ -62,8 +62,8 @@ function DownloadASX() {
     vid.pause();
     var time = vid.currentTime;
     var vidDur = vid.duration;
-    var maxDur = parseFloat(parseInt((vidDur - time) * 100000) / 100000);
-
+    var maxDur =parseFloat(parseInt((vidDur - time)*100000)/100000);
+    
     var source = vid.src;
     var title = $('#videotitle').html();
     $('#vidASXTitle').val(title);
@@ -72,7 +72,7 @@ function DownloadASX() {
 
     var curVal = parseFloat($("#durValue").val());
     if (curVal == 0) {
-        $("#durValue").val(Math.min(maxDur, 60.0))
+        $("#durValue").val(Math.min(maxDur,60.0))
     } else {
         $("#durValue").val(Math.min(maxDur, curVal))
     }
@@ -99,8 +99,7 @@ function DownloadASX() {
                         if (isNaN(durVal)) {
                             alert('Only accepts numeric value for the video diration.');
                             return;
-                        } else {
-                            0
+                        } else {0
 
                         }
 
@@ -115,8 +114,8 @@ function DownloadASX() {
 
                         var fileName = title.replace(/ /gi, '_').replace(/:/gi, ';').replace(/\\/gi, '_') + ".asx";
                         var tpl = '<ASX><ENTRY><TITLE>' + title + '</TITLE>' +
-                            '<StartTime Value = "' + time + '"/>' +
-                            '<Duration Value = "' + dur + '"/><REF HREF = "' + source + '"/>  </ENTRY></ASX>';
+                                '<StartTime Value = "' + time + '"/>' +
+                                '<Duration Value = "' + dur + '"/><REF HREF = "' + source + '"/>  </ENTRY></ASX>';
 
                         var blob = new Blob([tpl], {
                             type: "text/plain;charset=utf-8"
@@ -144,8 +143,8 @@ function DownloadASX() {
 
             },
         }
-    );
-
+        );
+ 
 }
 
 
@@ -168,8 +167,8 @@ function download(filename, text) {
 function winResize() {
     var html = document.documentElement;
 
-    var containerHeight = contHeight();
-    $('#thumbnails').css('height', (containerHeight - 160) + 'px');
+    var containerHeight=contHeight();
+    $('#thumbnails').css('height',(containerHeight-150) + 'px');
 
     return;
 
@@ -177,25 +176,25 @@ function winResize() {
     var cont = document.getElementById('divContainter');
     //            cont.style.width = contWidth() + 'px';
 
-
+    
 
     cont.style.height = containerHeight + 'px';
 
     var progress = document.getElementById('progressListWrapper');
     var uploaded = document.getElementById('uploadedListWrapper');
 
-    var wrapHeight = (containerHeight - 182);
+    var wrapHeight = (containerHeight-182);
 
-    progress.style.height = wrapHeight + 'px';
-    uploaded.style.height = wrapHeight + 'px';
+    progress.style.height =wrapHeight + 'px';
+    uploaded.style.height =wrapHeight + 'px';
 
     // resize table containers
     var hdrProgress = $("#hdrProgress");
 
-    if (isOverFlowing("progressListWrapper")) {
-        hdrProgress.css('width', '417px');
-    } else {
-        hdrProgress.css('width', '400px');
+    if(isOverFlowing("progressListWrapper")){
+        hdrProgress.css('width','417px');
+    }else{
+        hdrProgress.css('width','400px');
     }
 
 }
@@ -207,32 +206,32 @@ function contHeight() {
 
 
 function testRoutines() {
-
+    
 
     // test localStorage
-    //    if (localStorage.getItem('sample')) {
-    //        alert('sample: ' + localStorage.getItem('sample'));
-    //        localStorage.removeItem('sample');
-    //    } else {
-    //        alert(' sample data not found!!!');
-    //        localStorage.setItem('sample', 'Hello local storage');
-    //    }
+//    if (localStorage.getItem('sample')) {
+//        alert('sample: ' + localStorage.getItem('sample'));
+//        localStorage.removeItem('sample');
+//    } else {
+//        alert(' sample data not found!!!');
+//        localStorage.setItem('sample', 'Hello local storage');
+//    }
 
 
 
 }
 
 function isFromTestSite() {
-    return (location.href.toLowerCase().indexOf('ivltest.') != -1);
+    return ( location.href.toLowerCase().indexOf('ivltest.') != -1);
 }
 
 function isFromDevSite() {
-    return (location.href.toLowerCase().indexOf('alvdv3500') != -1);
+    return ( location.href.toLowerCase().indexOf('alvdv3500') != -1);
 }
 
 function redirectPage() {
 
-    return '';	// bypassed 2018-10-25
+return '';	// bypassed 2018-10-25
 
     var hr = location.href.toLowerCase();
 
@@ -243,13 +242,10 @@ function redirectPage() {
     }
 
     return '';
-
+    
 }
 
 var isInitialized = false;
-function isIE() {
-    return navigator.userAgent.search("Trident") != -1;
-}
 function initPage() {
 
     //$('#details').css('display', 'none');
@@ -271,20 +267,6 @@ function initPage() {
         $('#mnuUser').hide();
     }
 
-    try {
-        //if($.browser.msie){
-        if (isIE()) {
-            //$("#player_new").css("display", "none");
-            $("#player").css("display", "flex");
-        } else {
-            //$("#player").css("display", "none");
-            $("#player_new").css("display", "flex");
-        }
-
-    } catch (ee) {
-        alert(ee.message);
-    }
-
     $("#vidInspDate").datepicker();
     $("#fltFromID").datepicker();
     $("#fltToID").datepicker();
@@ -293,7 +275,7 @@ function initPage() {
     if ($('#itemsPerPageOld').val()) {
         $('#ItemsPerPage').val($('#itemsPerPageOld').val());
     }
-
+    
 
     initServerVars();
 
@@ -303,7 +285,7 @@ function initPage() {
 
     showMask(1);
 
-
+    
 
     initGlobalVars();
     setPaneDisplay();
@@ -322,13 +304,13 @@ function initPage() {
 
     keepAlive();
 
-    //    $('#debug').dialog({
-    //            autoOpen: (LOGIN_INFO.uid.toLowerCase()=='alv'),
-    //            resizable: true,
-    //            width: 480,
-    //            height: 320,
-    //            modal: false
-    //    });
+//    $('#debug').dialog({
+//            autoOpen: (LOGIN_INFO.uid.toLowerCase()=='alv'),
+//            resizable: true,
+//            width: 480,
+//            height: 320,
+//            modal: false
+//    });
 
     $('#debug').dialog({
         autoOpen: false,
@@ -338,25 +320,25 @@ function initPage() {
         modal: false
     });
 
-    //chgpass_form
-    $('#chgpass_form').dialog({
-        autoOpen: false,
-        resizable: false,
-        width: 260,
-        height: 170,
-        modal: true,
+        //chgpass_form
+        $('#chgpass_form').dialog({
+            autoOpen: false,
+            resizable: false,
+            width: 260,
+            height: 170,
+            modal: true,
 
-        open: function () {
-            //$('.ui-dialog-buttonpane').find('button:contains("Login")').addClass('buttonCommon');
-            //var btn = $('.ui-dialog-buttonpane').find('button:contains("Login")');
-            //$(btn).attr('class', 'button');
+            open: function () {
+                //$('.ui-dialog-buttonpane').find('button:contains("Login")').addClass('buttonCommon');
+                //var btn = $('.ui-dialog-buttonpane').find('button:contains("Login")');
+                //$(btn).attr('class', 'button');
 
-            $('.ui-dialog-buttonpane').find('button').attr('class', 'button');
-            $('#ChangePasswprd').attr('src', 'Tools/UserManagement/changepassword.html?ver=' + Date());
+                $('.ui-dialog-buttonpane').find('button').attr('class', 'button');
+                $('#ChangePasswprd').attr('src', 'Tools/UserManagement/changepassword.html?ver='+Date());
 
-        }
+            }
 
-    });
+        });
 
     retryUploadMonitor();
 }
@@ -373,7 +355,7 @@ function dateStrToYMD(id) {
     return ymd;
 }
 
-function YMDToDate(id, strDate) {
+function YMDToDate(id,strDate) {
 
     var idt = unescape(strDate);
 
@@ -447,8 +429,8 @@ function checkLoginInfo(validate) {
         $('#login_form').dialog({
             autoOpen: false,
             resizable: false,
-            width: 255,
-            height: 160,
+            width: 260,
+            height: 190,
             modal: true,
 
             open: function () {
@@ -513,7 +495,7 @@ function checkLoginInfo(validate) {
         $("#login_form").keydown(function (event) {
             if (event.keyCode == 13) {
                 $(this).parent()
-                    .find("button:eq(1)").trigger("click");
+                   .find("button:eq(1)").trigger("click");
                 return false;
             }
         });
@@ -531,14 +513,14 @@ function checkLoginInfo(validate) {
     if (LOGIN_INFO.urole) {
 
         var logHTML = '<ul class="uopt">' +
-            '<li style="min-width:110px;">' +
-            '<span><a>Welcome:&nbsp;' + LOGIN_INFO.uname + '!&nbsp;<img src="images/down_a.png" /></a></span>' +
-            '<ul class="dropdown" >' +
-            '<li><a href="#" id="acnChgPass">Change&nbsp;password</a></li>' +
-            '<li><a href="#" id="acnLogout">Log out</a></li>' +
-            '</ul>' +
-            '</li>' +
-            '</ul>';
+                        '<li style="min-width:110px;">' +
+                            '<span><a>Welcome:&nbsp;' + LOGIN_INFO.uname  + '!&nbsp;<img src="images/down_a.png" /></a></span>' +
+                            '<ul class="dropdown" >' +
+                                '<li><a href="#" id="acnChgPass">Change&nbsp;password</a></li>' +
+                                '<li><a href="#" id="acnLogout">Log out</a></li>' +
+                            '</ul>' +
+                        '</li>' +
+                      '</ul>';
 
         //$('#staActivity').html('Welcome ' + LOGIN_INFO.uname + '!&nbsp;<img src="images/down_a.png" title="User options..." id="userOptionsDown" />&nbsp;<a id="acnLogout" href="#">[Logout]</a>');
         $('#staActivity').html(logHTML);
@@ -552,16 +534,16 @@ function checkLoginInfo(validate) {
         //show('slide', { direction: 'left' }, 1400)
 
         $('#acnChgPass').click(function () {
-            //            if (LOGIN_INFO.uid != 'alv') {
-            //                alert('Sorry. This feature is not yet available.');
-            //                return;
-            //            }
+//            if (LOGIN_INFO.uid != 'alv') {
+//                alert('Sorry. This feature is not yet available.');
+//                return;
+//            }
 
             //alert('Tools/UserManagement/changepassword.html');
             showMask(1);
-            window.setTimeout(function () {
+            window.setTimeout(function(){
                 $('#chgpass_form').dialog("open");
-            }, 100);
+            },100);
         });
 
 
@@ -591,23 +573,19 @@ function checkLoginInfo(validate) {
 
     } else {
 
-        if (validate) {
-            alert('Invalid login information. Please try again.');
-            $('#logUID').focus();
-            $('#logUID').select();
-        } else {
-            $('#logUID').focus();
-            $('#logUID').select();
-            $('#logPWD').val('');
-        }
+    if (validate) {
+        alert('Invalid login information. Please try again.');
+        $('#logUID').focus();
+        $('#logUID').select();
+    } else {
+        $('#logUID').focus();
+        $('#logUID').select();
+        $('#logPWD').val('');
+    }
 
 
         $('#curtain').show('slide', { direction: 'right' }, 400);
         $('#details_all').hide('slide', { direction: 'left' }, 400);
-
-        //$('#curtain').hide('slide', { direction: 'right' }, 400);
-        //$('#details_all').show('slide', { direction: 'left' }, 400);
-
 
         $('#login_form').dialog("open");
         $('#staActivity').html('Logging in ...');
@@ -615,15 +593,15 @@ function checkLoginInfo(validate) {
     }
 
 
-
+    
 
     //alert(LOGIN_INFO.cuser);
 
     //
 }
 
-function closeChangePass() {
-    $('#chgpass_form').dialog("close");
+function closeChangePass(){
+     $('#chgpass_form').dialog("close");
 }
 
 function initServerVars() {
@@ -635,6 +613,10 @@ function initServerVars() {
         }).done(function (data) {
 
             USER_VARS = JSON.parse(data);
+
+            console.log("Data:", data, "DataEnd, USER_VARS:", USER_VARS,"EEE");
+
+
             THMIDX = USER_VARS.THMIDX;
 
             THMIDX.DESCRIPTION = THMIDX.Z + 2;
@@ -647,11 +629,7 @@ function initServerVars() {
             THMIDX.INSPTYPE = THMIDX.Z + 8;
             THMIDX.ITEMNO = THMIDX.Z + 9;
             THMIDX.INSPDATE = THMIDX.Z + 10;
-            THMIDX.CAMPAIGN = THMIDX.Z + 11;
-
-            // this must be adjusted to each time a new field will be added in the dataset
-            // must be assigned the last index of the data array
-            THMIDX.VID = THMIDX.Z + 12; 
+            THMIDX.VID = THMIDX.Z + 11;
 
 
             //ongoing uploads
@@ -727,76 +705,74 @@ var encodeDataTable;
 var encodeData = { "data": [] }
 
 var thmTemplate = '<div class="{STYLE}">' +
-    '<div>' +
-    '<img src="{SOURCE}" alt="{TITLE}" />' +
-    '<duration>{DURATION}</duration>' +
-    '</div>' +
-    '<vtitle>{TITLE}</vtitle>' +
-    '<views>{VIEWS}</views>' +
-    '</div>';
+                        '<div>' +
+                            '<img src="{SOURCE}" alt="{TITLE}" />' +
+                            '<duration>{DURATION}</duration>' +
+                        '</div>' +
+                        '<vtitle>{TITLE}</vtitle>' +
+                        '<views>{VIEWS}</views>' +
+                    '</div>';
 
 //var QIDX = { FILENAME: 0, SIZE: 1, LOCATION: 2, STATUS: 3 };
 var QIDX = { SELECTCHK: 0, FILENAME: 1, SIZE: 2, LOCATION: 3, STATUS: 4 };
 
 var VIDX = { ID: 0, TITLE: 1, DURATION: 2, VIEWS: 3, COMMENTS: 4 };
 var videoData = {}
-var rawVideoData;
 
 var TIDX = { ID: 0, TITLE: 1, WCHILD: 2, CODE: 3 };
 
 var testOnly = (location.href.toLowerCase().indexOf('ivltest.') != -1);
 
 
-var treeData = { N0: [["45488", testOnly ? "Root Location" : "Shell Upstream Americas Deepwater", "1", testOnly ? "Root" : "UA/D"]] };
-var treeDataX = {
-    N0: [
-        ["45488", "Shell Upstream Americas Deepwater", "1"]
-    ],
+var treeData = { N0: [["45488", testOnly ? "Root Location" : "Shell Upstream Americas Deepwater", "1",testOnly ? "Root" : "UA/D"]] };
+var treeDataX = { N0: [
+                    ["45488", "Shell Upstream Americas Deepwater","1"]
+                ],
 
-    N45488: [
-        ["44660", "UA/D Brazil", "1"],
-        ["45601", "Non-Shell (Generic) - Americas", "1"],
-        ["45706", "UA/D Gulf of Mexico", "1"],
-        ["102107", "Spares", "1"]
-    ],
-    N44660: [
-        ["44661", "Bijupira-Salema", "1"],
-        ["87694", "BC10", "1"]
-    ],
+                N45488: [
+                    ["44660", "UA/D Brazil", "1"],
+                    ["45601", "Non-Shell (Generic) - Americas", "1"],
+                    ["45706", "UA/D Gulf of Mexico", "1"],
+                    ["102107", "Spares", "1"]
+                ],
+                N44660: [
+                    ["44661", "Bijupira-Salema", "1"],
+                    ["87694", "BC10", "1"]
+                ],
 
-    N44661: [
-        ["44662", "Bijupira", "1"],
-        ["44780", "Gas Export Line", "1"],
-        ["44784", "Gas Export Line SSIV Umbilical", "1"],
-        ["45232", "Salema", "1"],
-        ["225066", "Bijupira-Salema Topsides", "1"],
-        ["225076", "Topsides Subsea Related", "1"]
+                N44661: [
+                    ["44662", "Bijupira", "1"],
+                    ["44780", "Gas Export Line", "1"],
+                    ["44784", "Gas Export Line SSIV Umbilical", "1"],
+                    ["45232", "Salema", "1"],
+                    ["225066", "Bijupira-Salema Topsides", "1"],
+                    ["225076", "Topsides Subsea Related", "1"]
+                    
+                ],
 
-    ],
+                N45706: [
+                    ["6", "Auger", "1"],
+                    ["1604", "MP-252", "1"],
+                    ["2260", "Boxer", "1"],
+                    ["2445", "Brutus", "1"],
+                    ["2847", "Bullwinkle", "1"],
+                    ["4393", "Cougar", "1"],
+                    ["5070", "Cognac", "1"],
+                    ["5778", "Enchilada", "1"],
+                    ["6233", "Fairway", "1"],
+                    ["6318", "Mars", "1"],
+                    ["7588", "Nakika", "1"],
+                    ["8770", "Brazos", "1"],
+                    ["42934", "Ram Powell", "1"],
+                    ["43134", "Ursa", "1"],
+                    ["44161", "West Delta 143", "1"],
+                    ["44633", "Yellowhammer", "1"],
+                    ["89552", "Gasmer Test Facility", "1"],
+                    ["89919", "Perdido", "1"],
+                    ["232068", "Olympus", "1"]
+                ] 
 
-    N45706: [
-        ["6", "Auger", "1"],
-        ["1604", "MP-252", "1"],
-        ["2260", "Boxer", "1"],
-        ["2445", "Brutus", "1"],
-        ["2847", "Bullwinkle", "1"],
-        ["4393", "Cougar", "1"],
-        ["5070", "Cognac", "1"],
-        ["5778", "Enchilada", "1"],
-        ["6233", "Fairway", "1"],
-        ["6318", "Mars", "1"],
-        ["7588", "Nakika", "1"],
-        ["8770", "Brazos", "1"],
-        ["42934", "Ram Powell", "1"],
-        ["43134", "Ursa", "1"],
-        ["44161", "West Delta 143", "1"],
-        ["44633", "Yellowhammer", "1"],
-        ["89552", "Gasmer Test Facility", "1"],
-        ["89919", "Perdido", "1"],
-        ["232068", "Olympus", "1"]
-    ]
-
-}
+               }
 
 
 
@@ -809,7 +785,7 @@ function initGlobalVars() {
 }
 
 function toggleButton(id, disabled, noclass) {
-
+    
     var btn = $('#' + id);
 
     if (typeof (noclass) == 'undefined') noclass = false;
@@ -826,12 +802,12 @@ function disableUploadButtons(disable) {
 
     //toggleButton('uploadNow', disable);
 
-    // Temporarily
-    //    if (disable) {
-    //        $('#uploadNow').html('Pause Uploading');
-    //    } else {
-    //        $('#uploadNow').html('Start Uploading');
-    //    }
+// Temporarily
+//    if (disable) {
+//        $('#uploadNow').html('Pause Uploading');
+//    } else {
+//        $('#uploadNow').html('Start Uploading');
+//    }
 
     toggleButton('uploadNow', disable);
     toggleButton('clearSelection', disable);
@@ -951,14 +927,14 @@ function assignEvents() {
 
     $('#mnuHelp').click(function () {
 
-        let openNewWin = (this.UGWin == undefined);
-        if (!openNewWin) openNewWin = this.UGWin.closed;
-
-        if (openNewWin) this.UGWin = window.open('./iVideoLib_UserGuide.pdf', '_blank');
-
-        try {
+        let openNewWin = (this.UGWin==undefined);
+        if(!openNewWin)openNewWin = this.UGWin.closed;
+        
+        if(openNewWin)this.UGWin=window.open('./iVideoLib_UserGuide.pdf','_blank');
+      
+        try{
             this.UGWin.focus();
-        } catch (e) {
+        }catch(e){
             alert(e.message);
         }
 
@@ -977,20 +953,7 @@ function assignEvents() {
     
     */
 
-    cloneSwitches().change(function () {
-        setCloneFieldCss(this);
-    })
 
-    function setCloneFieldCss(elem){
-        var ctl = $(elem);
-        var ctlId = ctl.attr("id").replace(/Common/gi, '');
-        var inp = $("#" + ctlId);
-
-        var isChecked = ctl.prop("checked");
-        ctl.next().css("text-decoration", isChecked ? "" : "line-through")
-           .css("color", isChecked ? "" : "#85745a");
-        inp.prop("disabled", !isChecked);
-    }
 
 
     $('#clearSelection').click(function () {
@@ -1014,35 +977,6 @@ function assignEvents() {
 
     })
 
-    $('#btnVidSelect').click(function () { allSelectUnselect("S"); });
-    $('#btnVidClear').click(function () { allSelectUnselect("U"); });
-    $('#btnVidInvert').click(function () { allSelectUnselect("I"); });
-
-    $('#btnVidEdit').click(function () { openVideoProperies(); });
-    $('#btnVidExit').click(function () { showChkSelect(); });
-
-    function allSelectUnselect(mode) {
-        var checks = getThumbs().find('input[type="checkbox"]');
-
-        for (var i = 0; i < checks.length; i++) {
-            var chk = $(checks[i]);
-            if (mode == "S") {
-                if (!chk.prop("checked")) chk.prop("checked", true);
-            } else if (mode == "U") {
-                if (chk.prop("checked")) chk.prop("checked", false);
-            } else {
-                // invert
-                chk.prop("checked", !chk.prop("checked"));
-            }
-        }
-    }
-
-
-
-    
-    
-    
-
     $("#vidSearchText").on('keyup', function (e) {
         if (e.keyCode == 13) {
             searchVideos();
@@ -1061,25 +995,25 @@ function assignEvents() {
         }
     });
 
-    var oldSearchVal = '';
+    var oldSearchVal='';
     $("#vidSearchText").on('mouseup', function (e) {
-        //        if (!$(this).val()) {
-        //            showThumbnails(false);
-        //        }
+//        if (!$(this).val()) {
+//            showThumbnails(false);
+//        }
         oldSearchVal = $('#vidSearchText').val();
-        setTimeout(function () {
+        setTimeout(function(){
             var newSearchVal = $('#vidSearchText').val();
-            if (oldSearchVal != '' && newSearchVal == '') {
+            if(oldSearchVal != '' && newSearchVal == ''){
                 showThumbnails(false);
             }
             //alert(oldSearchVal + ". "+ $('#vidSearchText').val());
             //alert($(this).val())
-        }, 500)
+        },500)
     });
 
 
-    $("#vidSearchText").on('input', function (e) {
-
+    $("#vidSearchText").on('input',function(e){
+        
     });
 
     $('#sepTree').click(function () {
@@ -1107,10 +1041,6 @@ function assignEvents() {
 var mouseOverTimeout = 0;
 var mouseOverImage = null;
 
-function cloneSwitches() {
-    return $("input[type='checkbox'].clone");
-}
-
 function searchVideos() {
     var src = $('#vidSearchText');
 
@@ -1125,53 +1055,7 @@ function searchVideos() {
 }
 
 function filterVideos() {
-    //alert("videodata.aspx?acn=camps")
-    //
-    populateFilterLookups();
     $("#video_filter").dialog("open");
-}
-
-var _populateFilterLookups = true;
-function populateFilterLookups() {
-    if (_populateFilterLookups) {
-        $("#fltCampaign")
-            .empty()
-            .append('<option selected="selected" value=\"all\">« All »</option>')
-            .append('<option  value=\"unspecified\">« Unspecified »</option>');
-
-        $("#fltInspType")
-            .empty()
-            .append('<option selected="selected" value=\"all\">« All »</option>')
-            .append('<option value=\"unspecified\">« Unspecified »</option>');
-
-        $.ajax({
-            url: "videodata.aspx?acn=fltl",
-            beforeSend: function () {
-                //showMask(1);
-            }   // can place fetch status like masking the page
-        }).done(function (data) {
-            var recs = JSON.parse(data);
-
-            var selCampaign = $("#fltCampaign");
-            var selInspType = $("#fltInspType");
-
-            for (var idx = 0; idx < recs.campaigns.length; idx++) {
-                var rec = recs.campaigns[idx];
-                var val = rec.cmp;
-                selCampaign.append('<option value=\"' + val + '\">' + val + '</option>');
-            }
-
-            for (var idx = 0; idx < recs.inspectionTypes.length; idx++) {
-                var rec = recs.inspectionTypes[idx];
-                var val = rec.itp;
-                selInspType.append('<option value=\"' + val + '\">' + val + '</option>');
-            }
-                        
-        });
-        _populateFilterLookups = false;
-    } else {
-        console.log("FilterLookups populated!");
-    }
 }
 
 function mouseOverEvent() {
@@ -1268,7 +1152,7 @@ function setVideoPlayerSource(id, noplay) {
 
     var data = videoData[id];
     var path = '';
-    var vp = $(isIE() ? '#videoplayer' : '#my-video');
+    var vp = $('#videoplayer');
     var poster = 'images/videoposter.png';
     var src = '';
     var title = 'No file loaded ...';
@@ -1281,7 +1165,7 @@ function setVideoPlayerSource(id, noplay) {
         //title = cleanTitle(data[THMIDX.TITLE]);
         title = unescape(data[THMIDX.TITLE]);
         //desc = data[THMIDX.DESCRIPTION].replace(/\[NL\]/gi,' ');;
-        desc = unescape(data[THMIDX.DESCRIPTION]);
+        desc =  unescape(data[THMIDX.DESCRIPTION]);
         if (!desc) desc = '&nbsp;';
 
         //comm = data[THMIDX.COMMENTS].replace(/\[NL\]/gi,'<br/>');
@@ -1291,6 +1175,7 @@ function setVideoPlayerSource(id, noplay) {
 
         if (isWithPoster(id)) poster = path + '/vpost.png';
         if (isVideoComplete(id)) src = path + '/video.mp4';
+
 
         resizeVideoPlayer();
     }
@@ -1305,7 +1190,7 @@ function setVideoPlayerSource(id, noplay) {
     vp.attr('poster', poster);
     $('#videotitle').html(title);
     $('#videodescription').html(desc);
-    $('#comments').html(comm.replace(/\n/gi, '<br/>'));
+    $('#comments').html(comm.replace(/\n/gi,'<br/>'));
 
 }
 
@@ -1316,20 +1201,16 @@ function getThumbs() {
     return tmbs;
 }
 
-function getThumbChk(chk) {
+function getThumbChk(chk){
     if (typeof (chk) == 'undefined') chk = false;
 
     var tmbs = getThumbs();
 
-    if (chk) {
+    if(chk){
         return tmbs.find('input:checked');
-    } else {
+    }else{
         return tmbs.find('input[type="checkbox"]');
     }
-}
-
-function getFilterChk() {
-    return $("#video_filter").find('input[type="checkbox"]');
 }
 
 var thmCheckVisible_ = false;
@@ -1342,8 +1223,6 @@ function showChkSelect() {
 
     thmCheckVisible_ = (chk.css('display') == 'none')
 
-    $("#vidMultiSelectControls").css('display', (thmCheckVisible_ ? 'flex' : 'none'));
-
     chk.css('display', (thmCheckVisible_ ? 'inline' : 'none'));
     $('#divThumbSelectAll').css('display', (thmCheckVisible_ ? 'inline' : 'none'));
 
@@ -1354,7 +1233,7 @@ function showChkSelect() {
 var queCheckVisible_ = false;
 function showQueChkSelect() {
 
-    queCheckVisible_ = false;
+    queCheckVisible_ = false;   
 
     var chk = getQueueChk();
     if (!chk.length) return;
@@ -1379,7 +1258,7 @@ function assignVideoEvents() {
 
     var acns = $('.acn_delete_img_det,.acn_edit_img_det,.acn_link_img_det');
     acns.unbind("click");
-
+    
     var tmbs = $('.box, .tbox');
 
     tmbs.click(function () {
@@ -1423,8 +1302,7 @@ function assignVideoEvents() {
 
         mouseOverTimeout = setTimeout(mouseOverEvent, 300);
 
-        //prevSource = img.attr("src"); // 2020/01/28 - causing error because img is undefined
-        prevSource = mouseOverImage.attr("src"); // 2020/01/28 - replacement for the preceding line
+        prevSource = img.attr("src");
 
 
 
@@ -1456,8 +1334,6 @@ function assignVideoEvents() {
         currImageID = $(this).parent().attr('id');
         if (this.className == 'acn_edit_img_det') {
 
-            openVideoProperies(currImageID);
-            /*
             data = videoData[currImageID];
             if (data) {
 
@@ -1501,10 +1377,9 @@ function assignVideoEvents() {
                 YMDToDate('vidInspDate', data[i.INSPDATE]);
 
                 $('#video_details').dialog("open");
-            }
-            */
-            // end!
 
+
+            }
         } else if (this.className == 'acn_delete_img_det') {
             data = videoData[currImageID];
             if (!confirm('You are about to delete video "' + data[THMIDX.TITLE] + '".\nClick [Ok] to proceed or [Cancel] to abort.')) return;
@@ -1585,87 +1460,6 @@ function assignVideoEvents() {
 
     });
 
-
-}
-
-function openVideoProperies(currImageID) {
-    if (currImageID == undefined) currImageID = -1;
-
-    var thmChk = getThumbChk(true);
-    var i = THMIDX;
-
-    if (thmCheckVisible_ && thmChk.length == 0) {
-        alert("Please select video(s) to edit by ticking the checkbox on the upper left portion of the thumbnail.")
-        return;
-    }
-
-    if (thmCheckVisible_) currImageID = thmChk[0].id.split("_")[1];
-
-    data = videoData[currImageID];  // get current row
-
-    if (thmCheckVisible_ && thmChk.length > 1) alert('Changes made will be applied to ' + thmChk.length + ' video items.');
-
-    $('#vidSource')
-        .val(thmCheckVisible_ ? '<< Not applicable for multiple record editing... >>' : data[i.FILENAME]);
-
-    $('#vidTitle').val(data[i.TITLE]);
-
-    $('#vidAssetName').val(data[i.ASSET_NAME]);
-
-    $('#vidDescription').val(unescape(data[i.DESCRIPTION]));
-    $('#vidComment').val(unescape(data[i.COMMENTS]));
-
-    $('#vidGroupID').val(data[i.GROUP]);
-    $('#vidAssetID').val(data[i.ASSET]);
-
-    $('#vidCampaign').val(unescape(data[i.CAMPAIGN]));
-
-    $('#vidInspOrInt').val(unescape(data[i.INSPORINT]));
-    $('#vidInspType').val(unescape(data[i.INSPTYPE]));
-    $('#vidMaintItemNo').val(unescape(data[i.ITEMNO]));
-
-    YMDToDate('vidInspDate', data[i.INSPDATE]);
-
-    currImageData = data;
-
-    $('#video_details').dialog({
-        title: 'Video Details' + (thmCheckVisible_ ?
-            ' - ( ' + thmChk.length + ' record' + (thmChk.length > 1 ? 's' : '') + ' for update ) Note: Toggle checkboxes before the labels of field(s) to update' : '')
-    });
-
-    var clnSw = cloneSwitches();
-    if (thmCheckVisible_) {
-        $('.clone').css("display", "inline");
-        $('.lbl2c').removeClass("R").css("width", "130px");
-        $('#lblSource').css("margin-right", "22px");
-
-        clnSw.prop("checked", false);
-
-
-    } else {
-        $('.clone').css("display", "none");
-        $('.lbl2c').addClass("R").css("width","");
-        $('#lblSource').css("margin-right", "");
-
-        clnSw.prop("checked", true);
-    }
-
-    for (var idx = 0; idx < clnSw.length; idx++) {
-
-        var ctl = $(clnSw[idx]);
-        var ctlId = ctl.attr("id").replace(/Common/gi, '');
-        var inp = $("#" + ctlId);
-
-        var isChecked = ctl.prop("checked");
-        ctl.next().css("text-decoration", isChecked ? "" : "line-through")
-           .css("color", isChecked ? "" : "#85745a");
-        inp.prop("disabled", !isChecked);
-
-        //setCloneFieldCss(clnSw[idx]);
-    }
-
-
-    $('#video_details').dialog("open");
 }
 
 var animateThumbnailTimeout = 0;
@@ -1730,7 +1524,6 @@ function separatorClick(e) {
     } else if (e.id == 'sepPlayer') {
         pane = $('#playing');
     }
-
 
     if (!pane) return;
 
@@ -1815,12 +1608,12 @@ function setPaneDisplay() {
         $('#playing').css('max-width', '2048px');
     }
 
-    //    if (isWithPlayer() && isWithTree()) {
-    //        // display comment only if the tree and player are visible
-    //        $('#comments').css('display', 'flex');
-    //    } else {
-    //        $('#comments').css('display', 'none');
-    //    }
+//    if (isWithPlayer() && isWithTree()) {
+//        // display comment only if the tree and player are visible
+//        $('#comments').css('display', 'flex');
+//    } else {
+//        $('#comments').css('display', 'none');
+//    }
 
     setThumbnailClass();
 }
@@ -1839,7 +1632,7 @@ function setupTables() {
             { "width": "100", "className": "dt-center", "targets": 2 },
             { "className": "dt-left", "targets": 3 },
             { "width": "100", "className": "dt-center", "targets": 4 },
-            { "width": "50", "className": "dt-center", "targets": 5 }
+            {  "width": "50", "className": "dt-center", "targets": 5 }
         ],
         'oLanguage': { 'sEmptyTable': 'No file in the queue for uploading ...' }
 
@@ -1848,21 +1641,21 @@ function setupTables() {
 
     // {"className": "dt-center", "targets": "_all"}
 
-    //    uploadDataTable = $('#tblServerUploads').DataTable({
+//    uploadDataTable = $('#tblServerUploads').DataTable({
 
-    //        'paging': false,
-    //        'searching': false,
-    //        'ordering': false,
-    //        'autoWidth': true,
-    //        'scrollY': '100px',
-    //        'columnDefs': [
-    //            { "className": "dt-left", "targets": 0 },
-    //            { "width": "50", "targets": 1 },
-    //            { "width": "50", "targets": 2 }
-    //        ],
-    //        'oLanguage': { 'sEmptyTable': 'No file in the queue for uploading ...' }
+//        'paging': false,
+//        'searching': false,
+//        'ordering': false,
+//        'autoWidth': true,
+//        'scrollY': '100px',
+//        'columnDefs': [
+//            { "className": "dt-left", "targets": 0 },
+//            { "width": "50", "targets": 1 },
+//            { "width": "50", "targets": 2 }
+//        ],
+//        'oLanguage': { 'sEmptyTable': 'No file in the queue for uploading ...' }
 
-    //    });
+//    });
 
     uploadDataTable = $('#tblServerUploads').DataTable({
 
@@ -1880,7 +1673,7 @@ function setupTables() {
         'oLanguage': { 'sEmptyTable': 'Pending or ongoing file(s) uploading <span style="color:red;">[NOT YET AVAILABLE]</span> ...' }
 
     });
-
+    
     encodeDataTable = $('#tblServerEncodings').DataTable({
 
         'paging': false,
@@ -1912,15 +1705,15 @@ function setQueueData(reset) {
     var key, obj, k2, name = '', size = '';
     var file;
 
-    //    if (reset) {
-    //        queueData.data = [];
-    //        for (key in ACTIVE_UPLOADS) {
+//    if (reset) {
+//        queueData.data = [];
+//        for (key in ACTIVE_UPLOADS) {
 
-    //            obj = ACTIVE_UPLOADS[key];
-    //            if (!obj) continue;
-    //            obj.isOnQueue(false);
+//            obj = ACTIVE_UPLOADS[key];
+//            if (!obj) continue;
+//            obj.isOnQueue(false);
 
-    //        }
+//        }
     //    }
 
     var acn = '';
@@ -1958,12 +1751,12 @@ function setQueueData(reset) {
         //var row = [file.name, file.size, '<span style="color:lime;width:100%;text-align:center;">' +  obj.status() + '</span>'];
         //var row = [file.name, file.size, obj.assetName(), statusHTML(obj.status()), acn];
         //var row = ['<input type="checkbox" class="recselect" style="display:' + ((queCheckVisible_ && isUplEditable(obj.status())) ? 'inline' : 'none') + ';" />', file.name, file.size, obj.attrib('astName'), statusHTML(obj.status()), acn];
-        //        var row;
-        //        if (queCheckVisible_ && isUplEditable(obj.status())) {
-        //            row = ['<input type="checkbox" class="recselect" />', file.name, file.size, obj.attrib('astName'), statusHTML(obj.status()), acn];
-        //        } else {
-        //            row = ['&nbsp;', file.name, file.size, obj.attrib('astName'), statusHTML(obj.status()), acn];
-        //        }
+//        var row;
+//        if (queCheckVisible_ && isUplEditable(obj.status())) {
+//            row = ['<input type="checkbox" class="recselect" />', file.name, file.size, obj.attrib('astName'), statusHTML(obj.status()), acn];
+//        } else {
+//            row = ['&nbsp;', file.name, file.size, obj.attrib('astName'), statusHTML(obj.status()), acn];
+//        }
         var row = ['<input type="checkbox" class="recselect" style="display:' + ((queCheckVisible_ && isUplEditable(obj.status())) ? 'inline' : 'none') + ';" />', file.name, file.size, obj.attrib('astName'), statusHTML(obj.status()), acn];
 
         obj.QObject(row);
@@ -1987,7 +1780,7 @@ function isUplRemovable(sta) {
 }
 
 function getUploadObject(filename, assetname) {
-    var idx, obj, fn, an;
+    var idx,obj,fn,an;
     for (idx = 0; idx < ACTIVE_UPLOADS.length; idx++) {
 
         obj = ACTIVE_UPLOADS[idx];
@@ -2080,18 +1873,16 @@ function getVideoKeyFromQ(e) {
     return { Filename: tds[QIDX.FILENAME].innerHTML, AssetName: tds[QIDX.LOCATION].innerHTML }
 }
 
-function showVideoMultiEditDetails(multi) {
+function showVideoMultiEditDetails() {
     //$('#vidTitle').prop('readonly', multipleEdit).val('');
-    multipleEdit = (multi == undefined ? multipleEdit = false : multipleEdit = multi);
-    
     if (multipleEdit) {
 
         $('#vidTitle').val('<< Not applicable for multiple record editing... >>');
         $('#vidSource').val('<< Not applicable for multiple record editing... >>');
 
-        //$('#video_details').dialog({ title: 'Video Details - (Multiple records selected for update)' });
+        $('#video_details').dialog({ title: 'Video Details - (Multiple records selected for update)' });
     } else {
-        //$('#video_details').dialog({ title: 'Video Details' });
+        $('#video_details').dialog({ title: 'Video Details' });
     }
 
     $('#vidTitle').prop('readonly', multipleEdit);
@@ -2115,7 +1906,7 @@ function openVideoDetails(fileName, assetName, bypassCheck) {
 
     if (!curUpObjEdit) {
         // this will only happen if there is an exception error
-        alert('(' + fileName + ') Video upload object not found.');
+        alert('('+ fileName + ') Video upload object not found.');
         return;
     }
 
@@ -2133,7 +1924,7 @@ function openVideoDetails(fileName, assetName, bypassCheck) {
             if (key) {
                 if (fileName == key.Filename && assetName == key.AssetName) {
                     //if(openVideoDetailsBypassRetry_)
-                    alert('Changes made will be applied to ' + chks.length + ' items in the queue.');
+                        alert('Changes made will be applied to ' + chks.length + ' items in the queue.');
                     multipleEdit = true;
                     break;
                 }
@@ -2216,19 +2007,19 @@ function openVideoDetails(fileName, assetName, bypassCheck) {
 
         })
 
-
+        
         //
         return;
     }
 
     try {
 
-        //        if (!obj.attrib('vt') && obj.status() == 'Req\'d Info.') {
-        //            //
-        //            $('#vidTitle').val(obj.defaultTitle());
-        //            $('#vidTitle').select();
-        //        } else {
-        //            $('#vidTitle').val(obj.attrib('vt'));
+//        if (!obj.attrib('vt') && obj.status() == 'Req\'d Info.') {
+//            //
+//            $('#vidTitle').val(obj.defaultTitle());
+//            $('#vidTitle').select();
+//        } else {
+//            $('#vidTitle').val(obj.attrib('vt'));
         //        }
 
         $('#vidTitle').val(obj.attrib('vt'));
@@ -2268,7 +2059,7 @@ function removeQueueRow(fileName, assetName) {
     }
 
     if (!confirm('File "' + fileName + '" will be removed from the list.\n\n' +
-        'Click [Ok] to continue or [Cancel] to abort.')) return;
+            'Click [Ok] to continue or [Cancel] to abort.')) return;
 
     // delete item from the ACTIVE_UPLOADS
 
@@ -2392,7 +2183,7 @@ function isValidFile(file) {
     var extension = file.name.replace(/^.*\./, '').toLowerCase();
 
     var validFile = '.mp4.asf.mks.mkv.mts.mpg.avi.mov.flv.ts.wmv.';
-    return (validFile.indexOf('.' + extension + '.') != -1)
+    return (validFile.indexOf('.'+extension+'.')!=-1)
     //return true;
 }
 
@@ -2435,47 +2226,47 @@ function uploadFileSelected() {
 
                 //ACTIVE_UPLOADS[ACTIVE_UPLOADS.length] = new UploadFileChunks(file, getGroupID(), getAssetID() + ':' + getAssetName());
 
-                //                ACTIVE_UPLOADS[ACTIVE_UPLOADS.length] = new UploadFileChunks(file, getGroupID(),
+//                ACTIVE_UPLOADS[ACTIVE_UPLOADS.length] = new UploadFileChunks(file, getGroupID(),
                 //                    getAssetID() + ':' + getAssetName(), 'VideoUpload3.aspx', null, null);
 
-                //                params = 'grp=' + group_ + '&ast=' + asset_ + 
-                //                         '&vt=' + title_ + '&ds=' + encodeURIComponent(description_) + '&cm=' + encodeURIComponent(comments_) +
-                //                         '&grpfid=' + group_ + '&astfid=' + asset_ + '&uid=' + uid_ + '&tm=' + (new Date());
+//                params = 'grp=' + group_ + '&ast=' + asset_ + 
+//                         '&vt=' + title_ + '&ds=' + encodeURIComponent(description_) + '&cm=' + encodeURIComponent(comments_) +
+//                         '&grpfid=' + group_ + '&astfid=' + asset_ + '&uid=' + uid_ + '&tm=' + (new Date());
 
-                //            var attrib = {
-                //                __grp: getGroupID(), __ast: getAssetID(), $vt: '', $ds: '', $cm: '',
-                //                grpfid: getGroupID(), astfid: getAssetID(), uid: LOGIN_INFO.uid,
-                //                _astName: getAssetName(), ioi: '', $itp: '', $mnm: '', idt: ''
+//            var attrib = {
+//                __grp: getGroupID(), __ast: getAssetID(), $vt: '', $ds: '', $cm: '',
+//                grpfid: getGroupID(), astfid: getAssetID(), uid: LOGIN_INFO.uid,
+//                _astName: getAssetName(), ioi: '', $itp: '', $mnm: '', idt: ''
                 //            };
 
-
+                
 
                 var attrib = {
-                    ast: { value: getAssetID(), persist: true, encode: false }
-                    , grp: { value: getGroupID(), persist: true, encode: false }
-                    , vt: { value: defaultVideoTitle(file), persist: false, encode: true }
-                    , ds: { value: '', persist: false, encode: true }
-                    , cm: { value: '', persist: false, encode: true }
-                    , grpfid: { value: getGroupID(), persist: false, encode: false }
-                    , astfid: { value: getAssetID(), persist: false, encode: false }
-                    , uid: { value: LOGIN_INFO.uid, persist: true, encode: false }
-                    , astName: { value: getAssetName(), persist: false, encode: false, exclude: true }
-                    , ioi: { value: '', persist: false, encode: false }
-                    , itp: { value: '', persist: false, encode: true }
-                    , mnm: { value: '', persist: false, encode: true }
-                    , idt: { value: '', persist: false, encode: false }
-                };
+                            ast: { value: getAssetID(), persist: true, encode: false }
+                                , grp: { value: getGroupID(), persist: true, encode: false }
+                                , vt: { value: defaultVideoTitle(file), persist: false, encode: true }
+                                , ds: { value: '', persist: false, encode: true }
+                                , cm: { value: '', persist: false, encode: true }
+                                , grpfid: { value: getGroupID(), persist: false, encode: false }
+                                , astfid: { value: getAssetID(), persist: false, encode: false }
+                                , uid: { value: LOGIN_INFO.uid, persist: true, encode: false }
+                                , astName: { value: getAssetName(), persist: false, encode: false, exclude: true }
+                                , ioi: { value: '', persist: false, encode: false }
+                                , itp: { value: '', persist: false, encode: true }
+                                , mnm: { value: '', persist: false, encode: true }
+                                , idt: { value: '', persist: false, encode: false }
+                        };
 
-                /***************************************************************************
-                NOTE: grpfid and astfid will be replaced with values from the manifest 
-                within the UploadFileChunks method the reason the persist function 
-                was set to false even if these parameters will still be used during
-                the actual chunk upload. 
-                ***************************************************************************/
+                        /***************************************************************************
+                        NOTE: grpfid and astfid will be replaced with values from the manifest 
+                        within the UploadFileChunks method the reason the persist function 
+                        was set to false even if these parameters will still be used during
+                        the actual chunk upload. 
+                        ***************************************************************************/
 
                 ACTIVE_UPLOADS[ACTIVE_UPLOADS.length] = new UploadFileChunks(file, attrib, 'VideoUpload3.aspx', null, null);
 
-
+                
             }
         }
 
@@ -2515,7 +2306,7 @@ function isInFilesSelected(file) {
     return isAlreadySelected;
 }
 
-function queStatusCount(sta) {
+function queStatusCount(sta){
     var status = '';
     var upl;
     var cnt = 0;
@@ -2541,7 +2332,7 @@ function uploadStatusCount(sta) {
     for (var idx in ACTIVE_UPLOADS) {
         upl = ACTIVE_UPLOADS[idx];
         status = upl.status().toLowerCase();
-
+        
         if (typeof (sta) == 'undefined') {
             if (isStatusForUploading(status)) cnt++;
         } else {
@@ -2606,7 +2397,7 @@ function testNetwork() {
             testNetwork();
         }, 5000);
 
-
+        
     } catch (eee) {
 
     }
@@ -2615,7 +2406,7 @@ function testNetwork() {
 
 var reConnectAttempt_ = 1;
 var noNetwork_ = false;
-var retryUploadMonitor_ = 0;
+var retryUploadMonitor_=0;
 function retryUploadMonitor() {
 
     if (!uploadLooping_) {
@@ -2644,7 +2435,7 @@ function retryUploadMonitor() {
                     for (var idx in ACTIVE_UPLOADS) {
                         upl = ACTIVE_UPLOADS[idx];
                         if (upl.status().toLowerCase() == 'retrying') {
-                            upl.chgStatus('Ready', true);    // change status to ready and reset network outage flag
+                            upl.chgStatus('Ready',true);    // change status to ready and reset network outage flag
                         }
                     }
 
@@ -2665,14 +2456,14 @@ function retryUploadMonitor() {
     retryUploadMonitor_ = setTimeout("retryUploadMonitor()", 1000);
 }
 
-var uploadLooping_ = false;
+var uploadLooping_=false;
 function goUploadFiles() {
 
     // this will continuously be called to check if there are any pending jobs
 
     if (paused) return;
 
-    uploadLooping_ = true;
+    uploadLooping_=true;
 
     var idx, upl = null;
     var withActive = false;
@@ -2688,7 +2479,7 @@ function goUploadFiles() {
         upl = ACTIVE_UPLOADS[idx];
         sta = upl.status().toLowerCase();
 
-        if (!withActive) withActive = (sta == 'uploading');
+        if (!withActive) withActive = (sta=='uploading');
         if (!incObj) if (isStatusForUploading(sta)) incObj = upl;
     }
 
@@ -2718,23 +2509,23 @@ function goUploadFiles() {
     } else {
 
         // enable upload selected file buttons when there is no pending jobs
-        setTimeout(function () {
+        setTimeout(function(){
             // check if retry status is existing
 
             uploadLooping_ = false;
 
-            if (!queStatusCount('Retrying')) resetQueueTable(); disableUploadButtons(false);
+            if(!queStatusCount('Retrying')) resetQueueTable();disableUploadButtons(false);
 
         }, 500);
-
+        
     }
-
+    
 }
 
 function isWithPendingUpload() {
     // this function checks for items in the queue that are currently uploading or ready
 
-    var idx, row, withPending = false;;
+    var idx, row, withPending = false; ;
     var sta;
     for (idx in queueData.data) {
         row = queueData.data[idx];
@@ -2825,45 +2616,22 @@ function resizeVideoPlayer() {
 
     var wd = ww - psp.left - psw;
 
-    //play.height(wh - hsp.top - ch);
-    //play.width(wd);
+    play.height(wh - hsp.top - ch);
+    play.width(wd);
 
-    //playdiv.height(wh - hsp.top - ch);
-    //playdiv.width(wd);
+    playdiv.height(wh - hsp.top - ch);
+    playdiv.width(wd);
 
-    var rightOff = 10;
-
-    fitRightElement('#videotitle', rightOff);
-    fitRightElement('#videodescription', rightOff);
-    fitRightElement('#comments', rightOff);
-    try {
-        //if($.browser.msie){
-        if (isIE()) {
-            fitBottomElement($("#player"), 160)
-
-        } else {
-            fitBottomElement($("#player_new"), 190)
-        }
-
-    } catch (ee) {
-
-    }
-
-    //$('#comments').width(wd-10-rightOff);
-    //$('#comments_heading').width(wd-rightOff);
-
-    //var obj = $('#videotitle')
-
-    //obj.width(ww-obj.position().left-20).css("background","red");
-    //$('#videodescription').width(wd-10-rightOff);
+    $('#comments').width(wd-10);
+    $('#comments_heading').width(wd);
 
     //alert(ch);
 
     try {
         if (LOGIN_INFO) {
-
+            
             if (isALV()) {
-                $('#footer').html(ww + ' : ' + psp.left + ' , ' + play.position().left + ' : ' + psw + ', ' + LOGIN_INFO.uid + ' , ' + (ww - psp.left - psw) + ' $("#videodescription").height():' + $('#videodescription').outerHeight());
+                $('#footer').html(ww + ' : ' + psp.left + ' , ' + play.position().left + ' : ' + psw + ', ' + LOGIN_INFO.uid + ' , ' + (ww - psp.left - psw) +' $("#videodescription").height():'+$('#videodescription').outerHeight());
             }
         }
     } catch (ee) {
@@ -2871,40 +2639,7 @@ function resizeVideoPlayer() {
 
 }
 
-function fitRightElement(element, marginRight, container) {
-    try {
-        if (container == undefined) container = window;
-        if (marginRight == undefined) marginRight = 0;
-        var cn = $(container);
-        var el = $(element);
-        //el.css("background","red")
-        var elPos = el.position();
-        //var cnPos = cn.position();
-        el.width(cn.width() - elPos.left - marginRight);
-
-    } catch (e) {
-        alert(e.message);
-    }
-
-}
-
-function fitBottomElement(element, marginBottom, container) {
-    try {
-        if (container == undefined) container = window;
-        if (marginBottom == undefined) marginBottom = 0;
-        var cn = $(container);
-        var el = $(element);
-
-        var elPos = el.position();
-        el.height(cn.height() - elPos.top - marginBottom);
-
-    } catch (e) {
-        alert(e.message);
-    }
-
-}
-
-function isALV() {
+function isALV(){
     return (LOGIN_INFO.uid.toLowerCase() == 'alv')
 }
 
@@ -2957,7 +2692,7 @@ function onFileUploadProgress(e) {
     var percSize = Math.round(upl / 1000.0) + ' of ' + Math.round(siz / 1000.0);
 
     $('#prgFilename').html(e.fileObject.name);
-    $('#prgPercent').html(Math.round(1000.0 * (upl / siz)) / 10.0 + '&nbsp;%');
+    $('#prgPercent').html(Math.round(1000.0 * (upl / siz))/10.0 + '&nbsp;%');
     $('#prgPercentSize').html(percSize);
     $('#progressBar').css('width', (perc * 100) + '%');
 
@@ -3010,7 +2745,7 @@ function generateThumbnails() {
 
     var noThumb = '<div id="nothumbnails">Sorry. No video file(s) available ...</div>';
 
-
+    
 
     $('#gallery').html(noThumb);
 
@@ -3031,24 +2766,24 @@ function generateThumbnails() {
     var status = '';
     var ts = '';
     var tpl = '<div id="{ID}" class="box">' +
-        '<input id="TCK_{ID}" type="checkbox" style="z-index:100;display:{DS};" />' +
-        '<div>' +
-        '<img class="thumb" src="{SRC}" />' +
-        '<duration>{DURATION}</duration>' +
-        '</div>' +
-        '<div class="vtitle" title="{DESC}">{TITLE}</div>' +
-        '<div class="vasset">{ASSET}</div>' +
-        '<debug>{DEBUG}</debug>' +
-        '<views>{VIEWS}</views>' +
-        '<img class="acn_edit_img_det" src="images/Edit_16x16.png" title="Edit video details" />' +
-        '<img class="acn_delete_img_det" src="images/delete_12x12.png" title="Delete video" />' +
-        '<img class="acn_link_img_det" src="images/Link.png" title="Copy Video Link" />' +
-        '{STATUS}' +
-        '</div>';
+                '<input id="TCK_{ID}" type="checkbox" style="z-index:100;display:{DS};" />' +
+                '<div>' +
+                    '<img class="thumb" src="{SRC}" />' +
+                    '<duration>{DURATION}</duration>' +
+                '</div>' +
+                '<div class="vtitle" title="{DESC}">{TITLE}</div>' +
+                '<div class="vasset">{ASSET}</div>' +
+                '<debug>{DEBUG}</debug>' +
+                '<views>{VIEWS}</views>' +
+                '<img class="acn_edit_img_det" src="images/Edit_16x16.png" title="Edit video details" />' +
+                '<img class="acn_delete_img_det" src="images/delete_12x12.png" title="Delete video" />' +
+                '<img class="acn_link_img_det" src="images/Link.png" title="Copy Video Link" />' +
+                '{STATUS}' +
+              '</div>';
 
     //videoData = { "V3": ["102107", "102107", "", "Home Made Router Table & Table Saw.mp4", "Complete", "00:06:26.33", "23513255", "100", "*SYSTEM*", "1", "1", "1", "1", "0", ""], "V4": ["102107", "102107", "", "Homemade jointer build.mp4", "Complete", "00:06:53.08", "28802169", "100", "*SYSTEM*", "1", "1", "1", "1", "0", ""], "V5": ["102107", "102107", "", "Cosby Pastel Pink.mts", "Uploading", "--:--:--", "194488320", "66.85", "*SYSTEM*", "1", "1", "0", "14", "0", ""], "V6": ["102107", "102107", "", "24GEP_KP88.5.asf", "Complete", "00:00:34.76", "17421587", "100", "*SYSTEM*", "1", "1", "1", "1", "0", ""] };
 
-
+    
 
 
     for (key in vDisp) {
@@ -3073,22 +2808,14 @@ function generateThumbnails() {
         if (!isVideoComplete(key)) {
             var sta = getVideoStatus(key);
             if (sta.STATUS == 'Uploading' || sta.STATUS == 'Encoding') {
-                dur = sta.PERCENT + '&nbsp;%';
+                dur = sta.PERCENT +  '&nbsp;%';
             }
             status = '<water class="rotate">' + sta.STATUS + '</water>';
         }
 
-        ts += tpl.replace(/{ID}/gi, key)
-            .replace(/{SRC}/gi, src)
-            .replace(/{DURATION}/gi, dur)
-            .replace(/{TITLE}/gi, title)
-            .replace(/{ASSET}/gi, asset)
-            .replace(/{VIEWS}/gi, views)
-            .replace(/{STATUS}/gi, status)
-            .replace(/{DESC}/gi, desc)
-            .replace(/{DS}/gi, (thmCheckVisible_ ? 'inline' : 'none'))
-            .replace(/{DEBUG}/gi, (LOGIN_INFO.uid.toLowerCase() == 'alv' ? dat[i.VID] : '&nbsp;'));
+        ts += tpl.replace(/{ID}/gi, key).replace(/{SRC}/gi, src).replace(/{DURATION}/gi, dur).replace(/{TITLE}/gi, title).replace(/{ASSET}/gi, asset).replace(/{VIEWS}/gi, views).replace(/{STATUS}/gi, status).replace(/{DESC}/gi, desc).replace(/{DS}/gi,(thmCheckVisible_ ? 'inline' : 'none')).replace(/{DEBUG}/gi,(LOGIN_INFO.uid.toLowerCase()=='alv'?dat[i.VID]:'&nbsp;'));
     }
+
     $('#gallery').html(ts);
 
     assignVideoEvents();
@@ -3137,8 +2864,8 @@ function videoToDisplay() {
     //if (cmaxPage == -1) cmaxPage = maxPages;
 
     var pgs = $('#paging');
-
-
+    
+    
 
     var ipp = parseInt($('#ItemsPerPage').val());
     var retVal = videoData;
@@ -3166,18 +2893,18 @@ function videoToDisplay() {
 
         if (i < sp) continue;
 
-        //        ctr++;
-        //        if (ctr > maxPages) {
-        //            ts += '...<a href="#" ' + (cpage_ == (i + 1) ? ' class="cpage" ' : '') + '>' + pgCnt + '</a>';
-        //            break;
-        //        } else {
-        //            ts += '<a href="#" ' + (cpage_ == (i + 1) ? ' class="cpage" ' : '') + '>' + (i + 1) + '</a>';
-        //        }
+//        ctr++;
+//        if (ctr > maxPages) {
+//            ts += '...<a href="#" ' + (cpage_ == (i + 1) ? ' class="cpage" ' : '') + '>' + pgCnt + '</a>';
+//            break;
+//        } else {
+//            ts += '<a href="#" ' + (cpage_ == (i + 1) ? ' class="cpage" ' : '') + '>' + (i + 1) + '</a>';
+//        }
 
         ts += '<a href="#" ' + (cpage_ == (i + 1) ? ' class="cpage" ' : '') + '>' + (i + 1) + '</a>';
 
 
-
+        
     }
 
     pgs.html(ts);
@@ -3201,7 +2928,7 @@ function videoToDisplay() {
             currImageNoPlay = true;
             vid1 = tmpObj[k];
         }
-
+        
     }
 
     retVal = tmpObj;
@@ -3228,7 +2955,7 @@ function assignPagingEvents() {
 
         if (!Initializing_) {
             // save panemode
-            $.ajax({ url: 'VideoData.aspx?acn=setipp&ipp=' + $(this).val() + '&tm=' + (new Date()) });
+            $.ajax({url: 'VideoData.aspx?acn=setipp&ipp=' + $(this).val() + '&tm=' + (new Date())});
         }
 
     });
@@ -3271,7 +2998,7 @@ function showThumbnails(filtered) {
     if (typeof (id) == 'undefined') id = -1;
     if (!updateThumbs) return;
 
-    if (typeof (filtered) == 'undefined') filtered = false;
+    if(typeof(filtered)=='undefined')filtered = false;
 
     var vurl;
     $('#nothumbnails').html('Searching videos. Please wait...');
@@ -3296,10 +3023,7 @@ function showThumbnails(filtered) {
 
     }
 
-    // debugging codes which log the url called when getting filtered data
-    //console.log("vurl:",vurl);
-    //if (!confirm("Continue?")) return;    // to give programmer the option to discontinue the remaining codes excution
-
+    console.log(vurl)
     try {
         $.ajax({
             url: vurl,
@@ -3308,17 +3032,17 @@ function showThumbnails(filtered) {
             }   // can place fetch status like masking the page
         }).done(function (data) {
 
-            //videoData = JSON.parse(data);
-            var unescStr = unescape(data);
-            videoData = JSON.parse(unescStr);
-            rawVideoData = data;
+
+            videoData = JSON.parse(unescape(data));
+
+            console.log("Data:", data, "raw end", unescape(data), "UEnd, videoData:",videoData);
 
             var vKey, vDat;
             for (vKey in videoData) {
                 vDat = videoData[vKey];
                 vDat[THMIDX.VID] = vKey.substr(1);
             }
-            
+
             generateThumbnails();
 
             showMask(-1);
@@ -3398,16 +3122,16 @@ function generateTree() {
             //$('.ui-dialog-buttonpane').find('button').attr('class', 'button');
 
             showMask(1);
-            $('#userManagement').attr('src', 'Tools/UserManagement/UserManagement.html?ver=' + Date());
-
+            $('#userManagement').attr('src', 'Tools/UserManagement/UserManagement.html?ver='+Date());
+            
             showMask(-1);
         }
-
-        //        ,buttons: {
-        //            Close: function () {
-        //                $('#user_management').dialog("close");
-        //            }
-        //        }
+        
+//        ,buttons: {
+//            Close: function () {
+//                $('#user_management').dialog("close");
+//            }
+//        }
 
     });
 
@@ -3504,8 +3228,8 @@ function generateTree() {
     $("#video_filter").dialog({
         autoOpen: false
         , resizable: false
-        , height: 285
-        , width: 550
+        , height: 255
+        , width: 520
         , modal: true
         , open: function () {
             $('.ui-dialog-buttonpane').find('button').attr('class', 'button');
@@ -3516,7 +3240,7 @@ function generateTree() {
                 text: 'Apply Filter'
                 , click: function () {
                     applyVideoFilter();
-
+                    
                 }
             }
             , {
@@ -3533,7 +3257,7 @@ function generateTree() {
     $("#video_details").dialog({
         autoOpen: false,
         resizable: false,
-        height: 610,
+        height: 500,
         width: 720,
         modal: true,
 
@@ -3589,14 +3313,13 @@ function saveVideoThumbnailDetails() {
 
     if (!multipleEdit) {
 
-        // currImageData is set when the openVideoProperty is called
         imgArr[0] = currImageData;
 
     } else {
         // get all checked thumbnails
         var tIdx;
         var thmChk = getThumbChk(true);
-
+        
         if (!thmChk.length) return;
         var datID = thmChk[0].id.substr(4);
 
@@ -3610,9 +3333,7 @@ function saveVideoThumbnailDetails() {
     var postData;
     var chk;
     var ids = '';
-    var clones = "0000000000";
 
-    /*
     for (iDat = 0; iDat < imgArr.length; iDat++) {
 
         dat = imgArr[iDat];
@@ -3626,8 +3347,6 @@ function saveVideoThumbnailDetails() {
         dat[i.COMMENTS] = $('#vidComment').val();
         dat[i.DESCRIPTION] = $('#vidDescription').val();
 
-        dat[i.CAMPAIGN] = $('#vidCampaign').val();
-
         dat[i.INSPORINT] = $('#vidInspOrInt').val();
         dat[i.INSPTYPE] = $('#vidInspType').val();
         dat[i.ITEMNO] = $('#vidMaintItemNo').val();
@@ -3636,47 +3355,18 @@ function saveVideoThumbnailDetails() {
         ids += (ids ? ',' : '') + dat[i.VID];
 
     }
-    */
 
-    var thmChk = getThumbChk(true);
-    console.log("thmChk:", thmChk, "thmChk.length", thmChk.length, "imgArr.length", imgArr.length, "currImageData:", imgArr[0], "thmChk-END");
-    if (thmCheckVisible_) {
-        for (var i = 0; i < thmChk.length; i++) { ids += (ids ? "," : "") + thmChk[i].id.substr(5); }
-        
-        if ($('#vidCommonAssetName').prop("checked")) { clones = setBit(clones, 1, true); clones = setBit(clones, 2, true); }
-        if ($('#vidCommonTitle').prop("checked")) clones = setBit(clones, 3, true);
-        if ($('#vidCommonComment').prop("checked")) clones = setBit(clones, 4, true);
-        if ($('#vidCommonDescription').prop("checked")) clones = setBit(clones, 5, true);
-        if ($('#vidCommonInspOrInt').prop("checked")) clones = setBit(clones, 6, true);
-        if ($('#vidCommonInspType').prop("checked")) clones = setBit(clones, 7, true);
-        if ($('#vidCommonMaintItemNo').prop("checked")) clones = setBit(clones, 8, true);
-        if ($('#vidCommonInspDate').prop("checked")) clones = setBit(clones, 9, true);
-        if ($('#vidCommonCampaign').prop("checked")) clones = setBit(clones, 10, true);
-
-    } else {
-        clones = "1111111111";
-        ids = currImageData[i.VID];
-    }
-
-
-
-    postData = {
-        vid: ids
-        , grp: $('#vidGroupID').val()
-        , ast: $('#vidAssetID').val()
-        , vt: uri((multipleEdit ? '-' : $('#vidTitle').val()))
-        , ds: uri($('#vidDescription').val())
-        , cm: uri($('#vidComment').val())
-        , cmp: uri($('#vidCampaign').val())
-        , ioi: uri($('#vidInspOrInt').val())
-        , itp: uri($('#vidInspType').val())
-        , mnm: uri($('#vidMaintItemNo').val())
-        , idt: dateStrToYMD('vidInspDate')
-        , tm: Date()
-        , flags: clones
+    postData = { vid: ids
+                        , grp: $('#vidGroupID').val(), ast: $('#vidAssetID').val()
+                        , vt: uri((multipleEdit ? '-' : $('#vidTitle').val()))
+                        , ds: uri($('#vidDescription').val())
+                        , cm: uri($('#vidComment').val())
+                        , ioi: uri($('#vidInspOrInt').val())
+                        , itp: uri($('#vidInspType').val())
+                        , mnm: uri($('#vidMaintItemNo').val())
+                        , idt: dateStrToYMD('vidInspDate')
+                        , tm: Date()
     };
-
-    console.log("postData:", postData, "imgArr.length:", imgArr.length, "multipleEdit:", multipleEdit);
 
     $.ajax({
         type: 'POST',
@@ -3686,7 +3376,6 @@ function saveVideoThumbnailDetails() {
         success: function (data) {
 
             $("#video_details").dialog("close");
-            if (thmCheckVisible_) showChkSelect();
             showMask(-1);           // last video data processed
 
         },
@@ -3701,18 +3390,6 @@ function saveVideoThumbnailDetails() {
 
     $("#video_details").dialog("close");
 
-}
-
-function setBit(binaryString, position, set) {
-   
-    if (set == undefined) set = false;
-    if (position == undefined) position = 0;
-
-    var bit = set ? "1" : "0";
-
-    if (position == 0) return bit + binaryString.substr(1);
-
-    return binaryString.substr(0, position - 1) + bit + binaryString.substr(position);
 }
 
 //function postVideoData(){
@@ -3771,7 +3448,7 @@ function setBit(binaryString, position, set) {
 //    }    
 //}
 
-function uri(text) { return encodeURIComponent(text); }
+function uri(text){ return encodeURIComponent(text); }
 
 function returnTreeToMainPanel() {
     var tree = $('#treeView');
@@ -3798,12 +3475,11 @@ function showDateRange(scope) {
 
 function clearVideoFilter() {
 
-    $('#fltCampaign').val('all');
-    $('#fltInspOrInt').val('all');
-    $('#fltInspType').val('all');
+    $('#fltInspOrInt').val('All');
+    $('#fltInspType').val('');
     $('#fltMaintItemNo').val('');
 
-    $('#fltScope').val('all');
+    $('#fltScope').val('All');
     $('#fltFromID').val('');
     $('#fltToID').val('');
 
@@ -3813,9 +3489,6 @@ function clearVideoFilter() {
 
     $('#fltAdvParams').val('');
 
-    getFilterChk().prop("checked", false);
-    $("#icoAdvFilter").css("display", "none");
-
     $('#video_filter').dialog("close");
     showThumbnails($('#vidSearchText').val().length != 0);
 
@@ -3823,79 +3496,12 @@ function clearVideoFilter() {
 
 function applyVideoFilter() {
 
-    var incs = "00000";
-
-    var cmp = $('#fltCampaign').val();
-    var ioi = $('#fltInspOrInt').val().toLowerCase();
-    var itp = $('#fltInspType').val();
-    var mnm = $('#fltMaintItemNo').val();
-
     var scp = $('#fltScope').val().toLowerCase();
     var frm = $('#fltFromID').val();
     var to = $('#fltToID').val();
-
-    //if ($('#fltInclScope').prop("checked") && scp != "all" && frm!="") incs = setBit(incs, 5, true);
-    var withScope = false;
-    if ($('#fltInclScope').prop("checked")) {
-        withScope = true;
-        if (scp == "all") {
-            withScope = false;
-        } else {
-            if (scp == "Before" && to == "") {
-                alert("Please specify reference date in the 'To' field.");
-                return;
-            }
-            if (scp == "After" && frm == "") {
-                alert("Please specify reference date in the 'From' field.");
-                return;
-            }
-            if (scp == "Between" && (frm == "" || to == "")) {
-                alert("Please specify reference dates in the 'From' and 'To' fields.");
-                return;
-            }
-        }
-
-    }
-
-    if ($('#fltInclCampaign').prop("checked") && cmp != "all") incs = setBit(incs, 1, true);
-    if ($('#fltInclInspOrInt').prop("checked") && ioi != "all") incs = setBit(incs, 2, true);
-    if ($('#fltInclInspType').prop("checked") && itp != "all") incs = setBit(incs, 3, true);
-    if ($('#fltInclMaintItemNo').prop("checked")) incs = setBit(incs, 4, true);
-    if (withScope) incs = setBit(incs, 5, true);
-
-    if (incs == "00000") {
-        alert("You have to select/check the field(s) you want apply filter on and specify appropriate filter parameter value(s).")
-        return;
-    }
-
-
-    var params = '&scp=' + $('#fltScope').val() + '&ioi=' + $('#fltInspOrInt').val()
-    + '&mnm=' + $('#fltMaintItemNo').val() + '&dfr=' + dateStrToYMD('fltFromID')
-    + '&dto=' + dateStrToYMD('fltToID') + '&itp=' + $('#fltInspType').val()
-    + '&cmp=' + $('#fltCampaign').val()
-    + '&flags=' + incs;
-
-    $('#fltAdvParams').val(params);
-
-    var aflt = $('#fltAdvParams').val();
-    vurl = 'VideoData.aspx?acn=avida&ast=' + getAssetID() +
-        '&flt=' + $('#vidSearchText').val() + aflt + '&tm=' + Date();
-
-
-    console.log("params:", params, "vurl:", vurl);
-
-    $('#fltAdvParams').val(params);
-
-    $('#video_filter').dialog("close");
-    $("#icoAdvFilter").css("display", "inline");
-    showThumbnails();
-
-    return;
-
-    var frm = $('#fltFromID').val();
-    var to = $('#fltToID').val();
-
-    
+    var ioi = $('#fltInspOrInt').val().toLowerCase();
+    var mnm = $('#fltMaintItemNo').val();
+    var itp = $('#fltInspType').val();
 
     if (!itp && !mnm && ioi == 'all' && scp == 'all') {
         alert('No filtering parameters set.');
@@ -3916,7 +3522,7 @@ function applyVideoFilter() {
         return;
     }
 
-    if (scp == 'between') {
+    if (scp == 'between'){
         if (!$('#fltFromID').val() || !$('#fltToID').val()) {
             alert('You have to specify both inspection start and end dates');
             if (!$('#fltFromID').val()) {
@@ -3934,8 +3540,8 @@ function applyVideoFilter() {
     }
 
     var params = '&scp=' + $('#fltScope').val() + '&ioi=' + $('#fltInspOrInt').val()
-        + '&mnm=' + $('#fltMaintItemNo').val() + '&dfr=' + dateStrToYMD('fltFromID')
-        + '&dto=' + dateStrToYMD('fltToID') + '&itp=' + $('#fltInspType').val();
+                + '&mnm=' + $('#fltMaintItemNo').val() + '&dfr=' + dateStrToYMD('fltFromID')
+                + '&dto=' + dateStrToYMD('fltToID') + '&itp=' + $('#fltInspType').val();
 
     $('#btnVidFilter').css('text-decoration', 'underline');
     $('#btnVidFilter').css('color', '#00ff00');
@@ -3966,7 +3572,7 @@ function saveVideoDetails() {
 
     try {
 
-        var objArr = [];
+        var objArr=[];
 
         if (multipleEdit) {
 
@@ -4054,7 +3660,7 @@ function updateLocation() {
         var parh, sp;
 
         //var ts = '<u>' + nodeSpan.html() + '</u>';
-        var ts = nodeSpan.html();
+        var ts =  nodeSpan.html();
         var html;
 
         if (parId != 'treeView') {
@@ -4113,7 +3719,7 @@ function getGroup(child) {
 
     }
 
-    var grp = null;
+    var grp=null;
     var par = $(child).parent();
     var ppar;
     var parh;
@@ -4134,7 +3740,7 @@ function getGroup(child) {
             parId = par.parent().parent().parent().prop('id');
         }
 
-        parId = $(par).prop('id');
+        parId=$(par).prop('id');
     }
 
     return parId.substr(1);
@@ -4152,10 +3758,10 @@ function generateTreeSub(p) {
         if (typeof (p) == 'undefined') p = null;
 
         var sdat = null;
-
+        
         if (!p) {
             // generate root node
-
+            
             var tv = $('#treeView');
             tv.empty();
 
@@ -4205,7 +3811,7 @@ function generateTreeSub(p) {
                     li = document.createElement('li');
                     li.id = 'N' + n[TIDX.ID];
 
-                    li.title = n[TIDX.CODE] + ' - ' + n[TIDX.TITLE];
+                    li.title = n[TIDX.CODE] + ' - ' +n[TIDX.TITLE];
 
                     sdat = treeData[li.id];
 
@@ -4252,7 +3858,7 @@ function setNodeSelection(img) {
     $(span[0]).prop('class', 'clicked');
 
     updateLocation();
-
+    
 }
 
 function assignTreeEvent() {
@@ -4268,7 +3874,7 @@ function assignTreeEvent() {
 
             this.className = 'p';
             //$(ul[0]).hide("fast");
-
+            
             $(ul[0]).slideUp();
         } else if (this.className == 'p') {
             //$(this).class('m');
@@ -4285,7 +3891,7 @@ function assignTreeEvent() {
             } else {
 
                 this.className = 'm';
-
+                
                 $(ul[0]).slideDown();
 
             }
@@ -4304,7 +3910,7 @@ function assignTreeEvent() {
         //Location: Root -> Level1 -> Level2 -> Level3
 
         updateLocation();
-        if (isVisibleGallery()) showThumbnails();
+        if(isVisibleGallery())showThumbnails();
 
         //alert($(this).parent().parent().attr('id'));
 
@@ -4362,8 +3968,8 @@ function getNodeData(id) {
 }
 
 
-function encFileName(fn) {
-    return fn.replace(/#/gi, '[S]').replace(/&/gi, '[A]').replace(/©/gi, '[C]').replace(/®/gi, '[R]').replace(/™/gi, '[T]');
+function encFileName(fn){
+    return  fn.replace(/#/gi, '[S]').replace(/&/gi, '[A]').replace(/©/gi, '[C]').replace(/®/gi, '[R]').replace(/™/gi, '[T]');
 }
 
 var keepAlive_ = 0;
@@ -4389,7 +3995,7 @@ function updateStatus() {
     if (updateStatus_) clearTimeout(updateStatus_);
 
     var checkInterval = 1500;
-    var key, ids = '';
+    var key, ids='';
 
     for (key in videoData) {
         //alert('key:' + isVideoComplete(key));
@@ -4416,5 +4022,5 @@ function changePassResult(e) {
         return;
     } else {
         parent.changePassResult({ uid: 1, stat: 'fail', msg: 'errrorrrororor' });
-    }
+    } 
 }

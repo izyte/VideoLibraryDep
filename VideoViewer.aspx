@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/Scrolls.css?ver=<%=Version("css/Scrolls.css") %>" />
     <div id="divMain">
         <div id="divPlayer">
-            <video id="videoplayer" controlsList="nodownload" type="video/mp4" autoplay controls loop style="background-color: #000000;"
+            <video id="videoplayer" type="video/mp4" autoplay controls loop style="background-color: #000000;"
                 poster="<%=vvwPoster %>">
                 <source id="vid" src="<%=vvwSource %>"></source>
         </div>
