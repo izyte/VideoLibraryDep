@@ -46,6 +46,12 @@ Video Library deployment package
 - Configure upload tool by editing VideoUploadTool.Config.json. Set the desired ```output_path```, ```archive_path``` and the receiving FileUpload url (```upload_url```).
 <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/video_upload_tool_config.png" />
 
+- Set IIS_IUSRS security access to ```<app_root>/App_Data``` and ```<app_root>/Videos``` folders.
+<div>
+<img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/security_app_data_folder.png" />
+  <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/security_videos_folder.png" />
+</div>
+
 - Test Video Library preferably using Google Chrome browser using the default credentials ``` user: admin, password: admin ```
 <div>
 <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/test_run.png" />
