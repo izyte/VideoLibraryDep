@@ -684,7 +684,11 @@ public class FileUploader : System.Web.Services.WebService
     [WebMethod]
     public string HelloWorld()
     {
-        return "Hello World" ;
+        string cnTpl = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0}\\VideoLibrary.mdb;Persist Security Info=True;";
+        string libraryPath = System.Configuration.ConfigurationManager.AppSettings["VIDEO_LIBRARY_DATA_PATH"];
+
+        return "{\"Connection\":" + cnTpl + ", \"prompt\":Hello World, \"libraryPath\":" + libraryPath +
+            ", \"MapPath\":" + String.Format(cnTpl, Context.Server.MapPath(libraryPath)) + "}";
     }
 
 
