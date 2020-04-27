@@ -52,8 +52,9 @@ Video Library deployment package
 <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/security_app_data_folder.png" />
   <h5>Videos Folder</h5>
   <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/security_videos_folder.png" />
-  <br/>
 </div>
+  <br/>
+  <br/>
 
 - Test Video Library preferably using Google Chrome browser using the default credentials ``` user: admin, password: admin ```
 <div>
