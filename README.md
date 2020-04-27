@@ -48,13 +48,15 @@ Video Library deployment package
 
 - Set IIS_IUSRS security access to ```<app_root>/App_Data``` and ```<app_root>/Videos``` folders.
 <div>
+  <h5>App_Data Folder</h5>
 <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/security_app_data_folder.png" />
+  <h5>Videos Folder</h5>
   <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/security_videos_folder.png" />
 </div>
 
 - Test Video Library preferably using Google Chrome browser using the default credentials ``` user: admin, password: admin ```
 <div>
-<img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/test_run.png" />
-  <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/test_run_default_credentials.png" />
+<img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/test_run.png" style="border: solid 1px blue;"/>
+  <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/test_run_default_credentials.png" style="border: solid 1px blue;"/>
   
   </div>
