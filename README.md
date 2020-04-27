@@ -59,5 +59,4 @@ Video Library deployment package
 <div>
 <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/test_run.png" style="border: solid 1px blue;"/>
   <img src="https://github.com/izyte/GitAssets/blob/master/VideoLibrary/test_run_default_credentials.png" style="border: solid 1px blue;"/>
-  
   </div>
